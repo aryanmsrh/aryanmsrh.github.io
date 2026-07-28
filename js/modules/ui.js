@@ -47,14 +47,20 @@ export function initScrollIndicator() {
   const indicator = document.getElementById("scroll-indicator");
   if (!indicator) return;
 
+  let hasScrolledBefore = false;
+
   const handleScroll = () => {
     if (window.scrollY > 60) {
+      hasScrolledBefore = true;
+      indicator.classList.remove("fade-in");
       indicator.classList.add("fade-out");
     } else {
-      indicator.classList.remove("fade-out");
+      if (hasScrolledBefore) {
+        indicator.classList.remove("fade-out");
+        indicator.classList.add("fade-in");
+      }
     }
   };
 
   window.addEventListener("scroll", handleScroll, { passive: true });
-  handleScroll();
 }
