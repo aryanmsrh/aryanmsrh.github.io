@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 80px;
+    padding-bottom: 155px;
     background: transparent;
     border: none;
     backdrop-filter: none;
@@ -18,22 +19,21 @@
 
 h1.name {
     font-family: "Space Grotesk", sans-serif;
-    font-size: clamp(2.8rem, 8vw, 5.8rem);
+    font-size: clamp(2.2rem, 7.5vw, 5.8rem);
     font-weight: 700;
     text-transform: uppercase;
-    line-height: 1.02;
+    line-height: 1.05;
     letter-spacing: -0.01em;
-    min-height: clamp(2.88rem, 8.2vw, 5.9rem);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    min-height: clamp(2.3rem, 7.8vw, 5.9rem);
+    display: inline-block;
+    text-align: center;
     opacity: 0;
 }
 
 .hero-cursor {
     display: inline-block;
     color: var(--accent);
-    margin-left: 4px;
+    margin-left: 3px;
     font-weight: 300;
     animation: blink 1s steps(1) infinite;
     vertical-align: baseline;
@@ -91,17 +91,18 @@ h1.name {
 }
 
 .stat-card {
-    flex: 1 1 250px;
+    --card-accent: var(--accent);
+    flex: 1 1 220px;
     max-width: 275px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--line);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 16px 18px;
+    padding: clamp(12px, 1.8vw, 16px) clamp(14px, 2vw, 18px);
     border-radius: 4px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: clamp(10px, 1.5vw, 14px);
     text-decoration: none;
     color: var(--off-white);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -112,24 +113,11 @@ h1.name {
     overflow: hidden;
 }
 
-.stat-card.github:hover {
-    border-color: rgba(43, 255, 136, 0.45);
-    background: rgba(43, 255, 136, 0.04);
-    box-shadow: 0 0 24px rgba(43, 255, 136, 0.14), inset 0 0 12px rgba(43, 255, 136, 0.05);
-    transform: translateY(-3px);
-}
-
-.stat-card.codeforces:hover {
-    border-color: rgba(231, 76, 60, 0.45);
-    background: rgba(231, 76, 60, 0.04);
-    box-shadow: 0 0 24px rgba(231, 76, 60, 0.14), inset 0 0 12px rgba(231, 76, 60, 0.05);
-    transform: translateY(-3px);
-}
-
-.stat-card.leetcode:hover {
-    border-color: rgba(255, 161, 22, 0.45);
-    background: rgba(255, 161, 22, 0.04);
-    box-shadow: 0 0 24px rgba(255, 161, 22, 0.14), inset 0 0 12px rgba(255, 161, 22, 0.05);
+.stat-card:hover {
+    border-color: var(--card-accent);
+    background: color-mix(in srgb, var(--card-accent) 6%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--card-accent) 15%, transparent),
+                inset 0 0 12px color-mix(in srgb, var(--card-accent) 5%, transparent);
     transform: translateY(-3px);
 }
 
@@ -137,25 +125,18 @@ h1.name {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: clamp(36px, 4.5vw, 44px);
+    height: clamp(36px, 4.5vw, 44px);
     border-radius: 4px;
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 30%, rgba(255, 255, 255, 0.08));
+    color: var(--card-accent);
 }
 
-.stat-card.github .stat-icon-wrapper {
-    color: var(--accent);
-    border-color: rgba(43, 255, 136, 0.25);
-}
-
-.stat-card.codeforces .stat-icon-wrapper {
-    border-color: rgba(231, 76, 60, 0.25);
-}
-
-.stat-card.leetcode .stat-icon-wrapper {
-    border-color: rgba(255, 161, 22, 0.25);
+.stat-icon-wrapper svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
 }
 
 .stat-info {
@@ -175,7 +156,7 @@ h1.name {
 
 .stat-platform {
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: clamp(10px, 1.2vw, 11px);
     font-weight: 500;
     color: var(--stone);
     text-transform: uppercase;
@@ -184,41 +165,26 @@ h1.name {
 
 .stat-badge {
     font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    padding: 2px 6px;
+    font-size: clamp(9px, 1.1vw, 10px);
+    padding: 2px 5px;
     border-radius: 2px;
     font-weight: 600;
     letter-spacing: 0.04em;
-}
-
-.stat-badge.green {
-    background: rgba(43, 255, 136, 0.12);
-    color: var(--accent);
-    border: 1px solid rgba(43, 255, 136, 0.25);
-}
-
-.stat-badge.red {
-    background: rgba(231, 76, 60, 0.12);
-    color: #ff4d6d;
-    border: 1px solid rgba(231, 76, 60, 0.25);
-}
-
-.stat-badge.gold {
-    background: rgba(255, 161, 22, 0.12);
-    color: #ffa116;
-    border: 1px solid rgba(255, 161, 22, 0.25);
+    background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+    color: var(--card-accent);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
 }
 
 .stat-main {
     display: flex;
     align-items: baseline;
-    gap: 6px;
-    margin-top: 2px;
+    gap: 5px;
+    margin-top: 1px;
 }
 
 .stat-value {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 1.45rem;
+    font-size: clamp(1.2rem, 2.2vw, 1.45rem);
     font-weight: 700;
     line-height: 1.1;
     color: var(--off-white);
@@ -226,18 +192,18 @@ h1.name {
 
 .stat-label {
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: clamp(10px, 1.2vw, 11px);
     color: var(--stone);
 }
 
 .stat-sub {
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: clamp(9px, 1.1vw, 10.5px);
     color: var(--stone);
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-top: 2px;
+    gap: 4px;
+    margin-top: 1px;
     opacity: 0.85;
 }
 
@@ -318,7 +284,7 @@ h1.name {
 /* --- Scroll Suggestion Arrow (Decoupled Transition & Animation Architecture) --- */
 .scroll-indicator {
     position: absolute;
-    bottom: 100px;
+    bottom: 95px;
     left: 50%;
     transform: translateX(-50%);
     color: var(--accent);
@@ -398,30 +364,149 @@ h1.name {
 @media (max-width: 768px) {
     #hero {
         text-align: center;
+        padding-top: 70px;
+        padding-bottom: 140px;
+    }
+
+    #hero h1.name {
+        font-size: clamp(2.5rem, 10.5vw, 4.2rem);
+        min-height: clamp(2.6rem, 10.5vw, 4.3rem);
     }
 
     #hero .tagline {
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        margin-top: 18px;
+        font-size: clamp(13px, 3.5vw, 15px);
     }
 
     .hero-stats {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        align-items: center;
         gap: 12px;
+        margin-top: 22px;
+        padding: 6px 16px 14px 16px;
+        width: 100%;
+        max-width: 100%;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent) rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-stats::-webkit-scrollbar {
+        height: 3px;
+        display: block;
+    }
+
+    .hero-stats::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        margin: 0 16px;
+    }
+
+    .hero-stats::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+        box-shadow: 0 0 8px rgba(43, 255, 136, 0.6);
     }
 
     .stat-card {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 0 0 230px;
+        width: 230px;
+        max-width: 230px;
+        padding: 10px 14px;
+        gap: 10px;
+        scroll-snap-align: center;
+        border-radius: 6px;
+    }
+
+    .stat-icon-wrapper {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stat-icon-wrapper svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
     }
 
     .hero-actions {
         width: 100%;
+        margin-top: 24px;
     }
 
     .hero-actions .hero-btn {
         width: calc(25% - 11px);
-        min-width: 48px;
+        min-width: 44px;
+        padding: 11px 16px;
         text-align: center;
+    }
+
+    .scroll-indicator {
+        bottom: 85px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1.name {
+        font-size: clamp(2.4rem, 11vw, 3.6rem);
+        min-height: clamp(2.5rem, 11vw, 3.7rem);
+    }
+
+    .hero-stats {
+        gap: 10px;
+        margin-top: 18px;
+        padding: 6px 12px 14px 12px;
+    }
+
+    .stat-card {
+        flex: 0 0 215px;
+        width: 215px;
+        max-width: 215px;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    .stat-icon-wrapper {
+        width: 32px;
+        height: 32px;
+    }
+
+    .stat-icon-wrapper svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .stat-platform {
+        font-size: 9.5px;
+    }
+
+    .stat-badge {
+        font-size: 8.5px;
+        padding: 1px 4px;
+    }
+
+    .stat-sub {
+        font-size: 9px;
+    }
+
+    .scroll-indicator {
+        bottom: 80px;
     }
 }
