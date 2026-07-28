@@ -3,22 +3,22 @@
    ========================================= */
 .eyebrow {
     font-family: "JetBrains Mono", monospace;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+    font-weight: 600;
     color: var(--accent);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 24px;
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .eyebrow::before {
     content: "";
-    width: 32px;
-    height: 1.5px;
+    width: 36px;
+    height: 2px;
     background: var(--accent);
 }
 

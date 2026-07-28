@@ -14,7 +14,12 @@ export async function renderAbout() {
     const data = await res.json();
 
     const paragraphsHTML = Array.isArray(data.paragraphs)
-      ? data.paragraphs.map((p) => `<p>${p}</p>`).join("\n          ")
+      ? data.paragraphs
+          .map(
+            (p, index) =>
+              `<p class="${index === 0 ? "about-head-p" : "about-followup-p"}">${p}</p>`
+          )
+          .join("\n          ")
       : "";
 
     const factsHTML = Array.isArray(data.facts)

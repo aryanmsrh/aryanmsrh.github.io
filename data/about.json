@@ -1,24 +1,24 @@
 {
   "paragraphs": [
-    "I enjoy building things that explain themselves.",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum cupiditate, minus maxime earum dolorem in vel officiis similique, modi quo reiciendis ullam eius beatae ex asperiores. Fugit, recusandae nulla. Asperiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum non illo, ex explicabo corporis sit, nisi autem quidem quia provident doloribus recusandae itaque, neque debitis quas. Aperiam sed excepturi at."
+    "I am a Computer Science & Mathematics undergraduate at BITS Pilani with a deep passion for building high-performance systems and exploring mathematical principles from the ground up.",
+    "My work spans algorithmic optimization, interactive visualizers, low-level computing, and modular web architecture. Whether dissecting complex algorithms or designing clean visual systems, I prioritize clarity, resilience, and first-principles thinking."
   ],
   "facts": [
     {
-      "label": "Based in",
+      "label": "Currently In",
       "value": "India"
     },
     {
-      "label": "Studying",
-      "value": "Computer Science"
+      "label": "Education",
+      "value": "BITS Pilani"
     },
     {
-      "label": "Currently",
-      "value": "writing a neural net without asking PyTorch for help"
+      "label": "Degree",
+      "value": "BE CS + MS Mathematics"
     },
     {
-      "label": "Reading list",
-      "value": "linear algebra, probability, a bit of physics on the side"
+      "label": "Focus",
+      "value": "Systems & Competitive Programming"
     }
   ]
 }

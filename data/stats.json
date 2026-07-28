@@ -1,52 +1,86 @@
 {
   "stats": [
     {
+      "id": "education",
+      "platform": "Education",
+      "badge": "UG",
+      "value": "BITS Pilani",
+      "label": "",
+      "sub": ["Dual Degree", "CS & Mathematics"],
+      "accentColor": "#3b82f6",
+      "content": "Pursuing a dual degree in Computer Science and Mathematics at BITS Pilani. Core focus on algorithms, operating systems, linear algebra, graph theory, and quantitative analysis.",
+      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10v6M2 10l10-5 10 5-10 5z\"/><path d=\"M6 12v5c3 3 9 3 12 0v-5\"/></svg>",
+      "active": true,
+      "showInHero": false
+    },
+    {
+      "id": "jee",
+      "platform": "JEE Main",
+      "badge": "T1.07%",
+      "value": "98.93%ile",
+      "label": "",
+      "sub": ["All India Rank", "National Test"],
+      "accentColor": "#ff9f43",
+      "content": "Secured 98.93 percentile in JEE Main, ranking among the top candidates nationally in one of India's most competitive engineering entrance exams.",
+      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+      "active": true,
+      "showInHero": false
+    },
+    {
+      "id": "codeforces",
+      "platform": "Codeforces",
+      "url": "https://codeforces.com/profile/aryanmsrh",
+      "badge": "GM",
+      "value": "2145",
+      "label": "Rating",
+      "sub": ["850+ Solved"],
+      "accentColor": "#e74c3c",
+      "content": "Competitive programming profile with Grandmaster status. Solved over 850+ algorithmic problems across dynamic programming, graph theory, and combinatorics.",
+      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\"><path fill=\"#F5B041\" d=\"M4.5 7.5a1.5 1.5 0 0 1 1.5 1.5v11.25A1.5 1.5 0 0 1 4.5 21.75h-3A1.5 1.5 0 0 1 0 20.25V9A1.5 1.5 0 0 1 1.5 7.5h3z\"/><path fill=\"#3498DB\" d=\"M13.5 2.25a1.5 1.5 0 0 1 1.5 1.5v16.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V3.75a1.5 1.5 0 0 1 1.5-1.5h3z\"/><path fill=\"#E74C3C\" d=\"M22.5 12a1.5 1.5 0 0 1 1.5 1.5v6.75a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V13.5a1.5 1.5 0 0 1 1.5-1.5h3z\"/></svg>",
+      "active": true,
+      "showInHero": true
+    },
+    {
+      "id": "icpc",
+      "platform": "ICPC",
+      "url": "https://icpc.global",
+      "badge": "WF",
+      "value": "Finalist",
+      "label": "",
+      "sub": ["2024 Asia West"],
+      "accentColor": "#f5b041",
+      "content": "Qualified as an Asia West World Finalist in the International Collegiate Programming Contest (ICPC), demonstrating elite problem-solving under strict time constraints.",
+      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"#F5B041\"><path d=\"M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V18H8v2h8v-2h-3v-2.1c1.96-.44 3.48-1.96 3.84-3.96C19.25 11.63 21 9.55 21 7V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z\"/></svg>",
+      "active": true,
+      "showInHero": true
+    },
+    {
       "id": "github",
       "platform": "GitHub",
       "url": "https://github.com/aryanmsrh",
       "badge": "1.2k+",
       "value": "182",
       "label": "Stars",
-      "sub": ["34 Repos", "47 Forks"],
+      "sub": ["34 Repos"],
       "accentColor": "#2bff88",
+      "content": "Open-source developer and project maintainer with 182+ total stars across 34 repositories. Focused on modular JS architectures, visualizers, and system tools.",
       "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"currentColor\"><path d=\"M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z\"/></svg>",
-      "active": true
-    },
-    {
-      "id": "codeforces",
-      "platform": "Codeforces",
-      "url": "https://codeforces.com/profile/aryanmsrh",
-      "badge": "Grandmaster",
-      "value": "2145",
-      "label": "Rating",
-      "sub": ["Max 2210", "850+ Solved"],
-      "accentColor": "#e74c3c",
-      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\"><path fill=\"#F5B041\" d=\"M4.5 7.5a1.5 1.5 0 0 1 1.5 1.5v11.25A1.5 1.5 0 0 1 4.5 21.75h-3A1.5 1.5 0 0 1 0 20.25V9A1.5 1.5 0 0 1 1.5 7.5h3z\"/><path fill=\"#3498DB\" d=\"M13.5 2.25a1.5 1.5 0 0 1 1.5 1.5v16.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V3.75a1.5 1.5 0 0 1 1.5-1.5h3z\"/><path fill=\"#E74C3C\" d=\"M22.5 12a1.5 1.5 0 0 1 1.5 1.5v6.75a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V13.5a1.5 1.5 0 0 1 1.5-1.5h3z\"/></svg>",
-      "active": true
-    },
-    {
-      "id": "icpc",
-      "platform": "ICPC",
-      "url": "https://icpc.global",
-      "badge": "Finalist",
-      "value": "World Finalist",
-      "label": "",
-      "sub": ["Asia West", "2024"],
-      "accentColor": "#f5b041",
-      "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"#F5B041\"><path d=\"M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V18H8v2h8v-2h-3v-2.1c1.96-.44 3.48-1.96 3.84-3.96C19.25 11.63 21 9.55 21 7V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z\"/></svg>",
-      "active": true
+      "active": true,
+      "showInHero": true
     },
     {
       "id": "leetcode",
       "platform": "LeetCode",
       "url": "https://leetcode.com/aryanmsrh",
-      "badge": "Knight",
+      "badge": "KN",
       "value": "2280",
       "label": "Rating",
-      "sub": ["Top 0.8%", "920+ Solved"],
+      "sub": ["920+ Solved"],
       "accentColor": "#ffa116",
+      "content": "Knight rank on LeetCode with 2280 rating (top 0.8% globally). Solved 920+ algorithmic challenges with consistent performance in weekly contests.",
       "svg": "<svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"#FFA116\"><path d=\"M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.606-2.636a4.994 4.994 0 0 0-3.853-1.391c-1.464.004-2.855.59-3.876 1.624L3.486 12.35c-1.02 1.02-1.596 2.39-1.596 3.854 0 1.463.576 2.834 1.596 3.854l4.331 4.363c1.021 1.021 2.41 1.583 3.874 1.583s2.853-.562 3.874-1.583l2.607-2.607c.514-.514.496-1.365-.039-1.901-.535-.535-1.386-.553-1.9-.038zM20.811 13.01H10.666c-.71 0-1.286-.576-1.286-1.286s.576-1.286 1.286-1.286h10.145c.71 0 1.286.576 1.286 1.286s-.576 1.286-1.286 1.286z\"/></svg>",
-      "active": false
+      "active": true,
+      "showInHero": true
     }
   ]
 }

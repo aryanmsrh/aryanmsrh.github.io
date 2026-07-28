@@ -20,7 +20,7 @@ export function initTypewriter() {
       } else {
         clearInterval(timer);
       }
-    }, 85);
+    }, 120);
   };
 
   const loader = document.getElementById("loader");
@@ -50,7 +50,7 @@ export async function renderHeroStats() {
     }
     const data = await res.json();
     const statsList = Array.isArray(data.stats)
-      ? data.stats.filter((item) => item.active !== false)
+      ? data.stats.filter((item) => item.active !== false && item.showInHero !== false)
       : [];
 
     if (statsList.length === 0) return;
@@ -87,6 +87,20 @@ export async function renderHeroStats() {
         `;
       })
       .join("");
+
+    container.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.deltaY !== 0 && !e.shiftKey) {
+          e.preventDefault();
+          container.scrollBy({
+            left: e.deltaY * 1.2,
+            behavior: "smooth"
+          });
+        }
+      },
+      { passive: false }
+    );
   } catch (err) {
     console.error("Error loading stats data:", err);
   }

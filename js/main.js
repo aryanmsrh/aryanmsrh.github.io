@@ -3,6 +3,7 @@ import { initScrollObserver } from "./modules/observer.js";
 import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
 import { renderAbout } from "./modules/about.js";
+import { renderCredentials } from "./modules/credentials.js";
 import { renderInterests } from "./modules/interests.js";
 import { renderTimeline } from "./modules/timeline.js";
 import { renderVideos } from "./modules/videos.js";
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypewriter();
   renderHeroStats();
   renderAbout();
+  renderCredentials();
   renderInterests();
   renderTimeline();
   renderVideos();
