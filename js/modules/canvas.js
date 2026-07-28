@@ -92,6 +92,7 @@ export function initCanvas() {
     const gridSize = 60;
     const mlDistortion = peak(0.2, 0.88, p);
 
+    // --- Grid & Vectors ---
     ctx.save();
     if (mlDistortion > 0) {
       const shearY = Math.sin(time * 0.8) * 0.5 * mlDistortion;
@@ -122,57 +123,143 @@ export function initCanvas() {
     }
     ctx.restore();
 
+    // --- Hero Visual (Circle Arc & Damped Sine Wave) ---
     const heroAlpha = 1 - smoothstep(0.15, 0.25, p);
     if (heroAlpha > 0.01) {
-      const r = height * 0.42;
-      const circleCX = -cx - r * 0.2;
-      const waveStartX = circleCX + r;
+      const isMobile = width <= 768;
       const angle = time * 1.5;
-      const px = Math.cos(angle) * r;
-      const py = -Math.sin(angle) * r;
 
-      ctx.save();
-      ctx.shadowBlur = 20;
-      ctx.shadowColor = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
-      ctx.strokeStyle = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.arc(circleCX, 0, r, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
+      if (!isMobile) {
+        // Desktop Layout (min-width: 769px):
+        // Horizontal propagation (left-to-right)
+        // Circle arc covers 100% of vertical height, constrained to left-most ~15-20% width.
+        const r = height * 0.5;
+        const targetRightEdge = -cx + width * 0.18;
+        const circleCX = targetRightEdge - r;
+        const circleCY = 0;
+        const waveStartX = targetRightEdge;
 
-      ctx.strokeStyle = `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`;
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(circleCX, 0);
-      ctx.lineTo(circleCX + px, py);
-      ctx.stroke();
+        const px = circleCX + Math.cos(angle) * r;
+        const py = -Math.sin(angle) * r;
 
-      ctx.setLineDash([4, 4]);
-      ctx.beginPath();
-      ctx.moveTo(circleCX + px, py);
-      ctx.lineTo(waveStartX, py);
-      ctx.stroke();
-      ctx.setLineDash([]);
+        // Circle Arc
+        ctx.save();
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
+        ctx.strokeStyle = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(circleCX, circleCY, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
 
-      const waveGrad = ctx.createLinearGradient(waveStartX, 0, cx * 0.8, 0);
-      waveGrad.addColorStop(
-        0,
-        `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`
-      );
-      waveGrad.addColorStop(1, `rgba(${baseAccent}, 0)`);
+        // Radial Vector
+        ctx.strokeStyle = `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(circleCX, circleCY);
+        ctx.lineTo(px, py);
+        ctx.stroke();
 
-      ctx.strokeStyle = waveGrad;
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      for (let x = waveStartX; x < cx; x += 2) {
-        const distance = x - waveStartX;
-        const wavePhase = angle - distance * 0.015;
-        const wy = -Math.sin(wavePhase) * r;
-        if (x === waveStartX) ctx.moveTo(x, wy);
-        else ctx.lineTo(x, wy);
+        // Projection Line (dashed)
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(waveStartX, py);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Damped Wave (Exponential spatial decay e^{-gamma * x})
+        const waveGrad = ctx.createLinearGradient(waveStartX, 0, cx, 0);
+        waveGrad.addColorStop(
+          0,
+          `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`
+        );
+        waveGrad.addColorStop(1, `rgba(${baseAccent}, 0)`);
+
+        ctx.strokeStyle = waveGrad;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+
+        const gamma = 3.5 / (width * 0.6);
+        const waveLengthFactor = 0.015;
+
+        for (let x = waveStartX; x <= cx; x += 2) {
+          const d = x - waveStartX;
+          const damping = Math.exp(-gamma * d);
+          const wavePhase = angle - d * waveLengthFactor;
+          const wy = -r * damping * Math.sin(wavePhase);
+
+          if (x === waveStartX) ctx.moveTo(x, wy);
+          else ctx.lineTo(x, wy);
+        }
+        ctx.stroke();
+      } else {
+        // Mobile Layout (max-width: 768px):
+        // Vertical propagation (top-to-bottom)
+        // Semi-circle arc in top 20%-30% of viewport height, spanning full horizontal width.
+        const r = width * 0.5;
+        const targetBottomEdge = -cy + height * 0.25;
+        const circleCX = 0;
+        const circleCY = targetBottomEdge - r;
+        const waveStartY = targetBottomEdge;
+
+        const px = circleCX + Math.cos(angle) * r;
+        const py = circleCY + Math.sin(angle) * r;
+
+        // Circle Arc
+        ctx.save();
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
+        ctx.strokeStyle = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(circleCX, circleCY, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // Radial Vector
+        ctx.strokeStyle = `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(circleCX, circleCY);
+        ctx.lineTo(px, py);
+        ctx.stroke();
+
+        // Projection Line (dashed)
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(px, waveStartY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Damped Wave (Exponential spatial decay e^{-gamma * y})
+        const waveGrad = ctx.createLinearGradient(0, waveStartY, 0, cy);
+        waveGrad.addColorStop(
+          0,
+          `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`
+        );
+        waveGrad.addColorStop(1, `rgba(${baseAccent}, 0)`);
+
+        ctx.strokeStyle = waveGrad;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+
+        const gamma = 3.5 / (height * 0.6);
+        const waveLengthFactor = 0.015;
+
+        for (let y = waveStartY; y <= cy; y += 2) {
+          const d = y - waveStartY;
+          const damping = Math.exp(-gamma * d);
+          const wavePhase = angle - d * waveLengthFactor;
+          const wx = r * damping * Math.cos(wavePhase);
+
+          if (y === waveStartY) ctx.moveTo(wx, y);
+          else ctx.lineTo(wx, y);
+        }
+        ctx.stroke();
       }
-      ctx.stroke();
     }
 
     ctx.restore();
