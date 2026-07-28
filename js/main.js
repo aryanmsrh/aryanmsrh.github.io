@@ -7,6 +7,7 @@ import { renderInterests } from "./modules/interests.js";
 import { renderTimeline } from "./modules/timeline.js";
 import { renderVideos } from "./modules/videos.js";
 import { renderContact } from "./modules/contact.js";
+import { initTypewriter, renderHeroStats } from "./modules/hero.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initLoader();
@@ -15,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollObserver();
   initModalListeners();
   initCanvas();
+  initTypewriter();
+  renderHeroStats();
   renderAbout();
   renderInterests();
   renderTimeline();
