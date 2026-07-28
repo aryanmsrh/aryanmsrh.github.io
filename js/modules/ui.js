@@ -3,12 +3,17 @@
  */
 
 export function initLoader() {
-  window.addEventListener("load", () => {
-    setTimeout(
-      () => document.getElementById("loader")?.classList.add("hide"),
-      700
-    );
-  });
+  const hideLoader = () => {
+    document.getElementById("loader")?.classList.add("hide");
+  };
+
+  if (document.readyState === "complete") {
+    setTimeout(hideLoader, 200);
+  } else {
+    window.addEventListener("load", () => {
+      setTimeout(hideLoader, 200);
+    });
+  }
 }
 
 export function initMobileMenu() {
@@ -43,9 +48,7 @@ export function initScrollIndicator() {
   if (!indicator) return;
 
   const handleScroll = () => {
-    const hero = document.getElementById("hero");
-    const threshold = hero ? hero.offsetHeight * 0.3 : 100;
-    if (window.scrollY > threshold) {
+    if (window.scrollY > 60) {
       indicator.classList.add("fade-out");
     } else {
       indicator.classList.remove("fade-out");
