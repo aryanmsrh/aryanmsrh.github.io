@@ -1,0 +1,27 @@
+[
+  {
+    "year": "2022",
+    "title": "HandMobile",
+    "description": "First real hardware project — gesture control on a robotic car."
+  },
+  {
+    "year": "2023",
+    "title": "Arduino projects",
+    "description": "A year of small circuits, sensors, and things that occasionally caught fire."
+  },
+  {
+    "year": "2025",
+    "title": "Neural Network Engine",
+    "description": "Backpropagation from scratch, no shortcuts, 97% on MNIST."
+  },
+  {
+    "year": "2026",
+    "title": "BITS Pilani",
+    "description": "Hyderabad Campus."
+  },
+  {
+    "year": "Future",
+    "title": "…",
+    "description": "Still converging."
+  }
+]

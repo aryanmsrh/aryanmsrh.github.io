@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aryan Mishra</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <!-- LOADER -->
+    <div id="loader">
+      <span id="loader-text">
+        Compiling from scratch...<span class="cursor"></span>
+      </span>
+    </div>
+
+    <!-- MATH CANVAS -->
+    <canvas id="math-field"></canvas>
+
+    <!-- NAVBAR -->
+    <nav>
+      <span class="nav-mark">aryanmsrh</span>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#think">Interests</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#projects">Projects</a>
+      <a href="#think">Interests</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <h1 class="name">Aryan Mishra</h1>
+      <p class="subtitle">Computer Science & Mathematics</p>
+      <p class="tagline">Building systems from first principles.</p>
+      <div class="hero-actions">
+        <!-- <a class="btn primary" href="#projects">Projects</a> -->
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="https://github.com" target="_blank">GitHub</a>
+        <a class="btn" href="https://youtube.com" target="_blank">YouTube</a>
+        <a class="btn" href="#" target="_blank">Resume</a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="reveal">
+      <div class="eyebrow">About</div>
+      <div class="about-grid"></div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="reveal">
+      <div class="eyebrow">Projects</div>
+      <h2 class="serif" style="font-size: 2rem; font-weight: 500">
+        Things I built to answer a question.
+      </h2>
+      <div class="proj-grid"></div>
+    </section>
+
+    <!-- INTERESTS SECTION -->
+    <section id="think" class="reveal">
+      <div class="eyebrow">Things I think about</div>
+      <div class="think-list"></div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section id="timeline" class="reveal">
+      <div class="eyebrow">Timeline</div>
+      <div class="tl"></div>
+    </section>
+
+    <!-- VIDEOS SECTION -->
+    <section id="videos" class="reveal">
+      <div class="eyebrow">Explaining what I build</div>
+      <div class="video-grid"></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="reveal">
+      <div class="eyebrow">Contact</div>
+      <div class="contact-grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Built from scratch.<br />Like most of the projects above.</p>
+      <span class="mono">© 2026 — designed for clarity, not decoration</span>
+    </footer>
+
+    <div id="modal-backdrop" onclick="if (event.target === this) closeModal();">
+      <div class="modal" id="modal-content"></div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

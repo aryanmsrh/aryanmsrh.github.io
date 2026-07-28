@@ -1,0 +1,46 @@
+[
+  {
+    "id": "nn",
+    "title": "Neural Network Engine",
+    "description": "A feedforward network built from raw NumPy — every gradient computed and checked by hand.",
+    "tags": ["NumPy", "Backprop", "Adam"],
+    "githubLink": "https://www.github.com/",
+    "liveLink": null,
+    "youtubeLink": null,
+    "svg": "<svg class=\"proj-thumb\" viewBox=\"0 0 300 110\"><line x1=\"10\" y1=\"20\" x2=\"10\" y2=\"90\" stroke=\"#2BFF88\" stroke-width=\"1\" opacity=\".5\"/><circle cx=\"30\" cy=\"30\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"30\" cy=\"55\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"30\" cy=\"80\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"150\" cy=\"20\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"150\" cy=\"45\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"150\" cy=\"70\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"150\" cy=\"95\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"270\" cy=\"55\" r=\"4\" fill=\"none\" stroke=\"#2BFF88\" /><g stroke=\"#2BFF88\" stroke-width=\"0.4\" opacity=\".6\"><line x1=\"34\" y1=\"30\" x2=\"146\" y2=\"20\" /><line x1=\"34\" y1=\"30\" x2=\"146\" y2=\"45\" /><line x1=\"34\" y1=\"30\" x2=\"146\" y2=\"70\" /><line x1=\"34\" y1=\"30\" x2=\"146\" y2=\"95\" /><line x1=\"34\" y1=\"55\" x2=\"146\" y2=\"20\" /><line x1=\"34\" y1=\"55\" x2=\"146\" y2=\"45\" /><line x1=\"34\" y1=\"55\" x2=\"146\" y2=\"70\" /><line x1=\"34\" y1=\"55\" x2=\"146\" y2=\"95\" /><line x1=\"34\" y1=\"80\" x2=\"146\" y2=\"20\" /><line x1=\"34\" y1=\"80\" x2=\"146\" y2=\"45\" /><line x1=\"34\" y1=\"80\" x2=\"146\" y2=\"70\" /><line x1=\"34\" y1=\"80\" x2=\"146\" y2=\"95\" /><line x1=\"154\" y1=\"20\" x2=\"266\" y2=\"55\" /><line x1=\"154\" y1=\"45\" x2=\"266\" y2=\"55\" /><line x1=\"154\" y1=\"70\" x2=\"266\" y2=\"55\" /><line x1=\"154\" y1=\"95\" x2=\"266\" y2=\"55\" /></g></svg>",
+    "question": "Could I build a modular neural network framework using only NumPy — while understanding every line — instead of importing PyTorch?",
+    "journey": [
+      "I wanted to know what backpropagation actually computes, not just what it's called. So the rule was simple: no autograd, no framework — every gradient derived and written by hand.",
+      "The engine ended up with dense layers, He initialization, SGD and Adam optimizers, and a softmax cross-entropy loss built from the definition upward.",
+      "It reached 97% accuracy on MNIST. The number mattered less than being able to explain, at every layer, exactly why the loss went down."
+    ],
+    "stack": "NumPy · Python · matplotlib for diagnostics"
+  },
+  {
+    "id": "hm",
+    "title": "HandMobile",
+    "description": "A gesture-controlled robotic car — computer vision mapped directly onto motor signals.",
+    "tags": ["OpenCV", "Arduino", "Python"],
+    "githubLink": null,
+    "liveLink": null,
+    "youtubeLink": null,
+    "svg": "<svg class=\"proj-thumb\" viewBox=\"0 0 300 110\"><path d=\"M40,80 L60,40 L100,40 L110,20 L140,20 L150,40 L190,40 L210,80 Z\" fill=\"none\" stroke=\"#2BFF88\" stroke-width=\"1\" /><circle cx=\"80\" cy=\"90\" r=\"10\" fill=\"none\" stroke=\"#2BFF88\" /><circle cx=\"170\" cy=\"90\" r=\"10\" fill=\"none\" stroke=\"#2BFF88\" /><path d=\"M230,30 Q250,50 230,70\" fill=\"none\" stroke=\"#2BFF88\" stroke-width=\"1\" /><path d=\"M240,20 Q270,50 240,80\" fill=\"none\" stroke=\"#2BFF88\" stroke-width=\"1\" opacity=\".5\" /></svg>",
+    "question": "Could hand gestures, read through a webcam, control a physical car in real time with low enough latency to feel direct?",
+    "journey": [
+      "The interesting part wasn't the car — it was the pipeline from a webcam frame to a motor signal, and how much of that had to happen in milliseconds.",
+      "Hand landmarks were tracked with OpenCV, mapped to a small gesture vocabulary, and sent over serial to an Arduino driving the motors.",
+      "The hardest bug wasn't code — it was a loose ground wire that made 'stop' occasionally mean 'go'."
+    ],
+    "stack": "OpenCV · Python · Arduino · C++"
+  },
+  {
+    "id": "more",
+    "title": "More to come",
+    "description": "Currently exploring new architectures and scaling laws. New systems will be documented here once they converge.",
+    "tags": ["Research"],
+    "githubLink": null,
+    "liveLink": null,
+    "youtubeLink": null,
+    "svg": "<svg class=\"proj-thumb\" viewBox=\"0 0 300 110\"><circle cx=\"150\" cy=\"55\" r=\"40\" fill=\"none\" stroke=\"#2BFF88\" stroke-width=\"1\" stroke-dasharray=\"4 8\" /><circle cx=\"150\" cy=\"55\" r=\"25\" fill=\"none\" stroke=\"#2BFF88\" stroke-width=\"0.5\" /><circle cx=\"150\" cy=\"55\" r=\"4\" fill=\"#2BFF88\" /></svg>"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "paragraphs": [
+    "I enjoy building things that explain themselves.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum cupiditate, minus maxime earum dolorem in vel officiis similique, modi quo reiciendis ullam eius beatae ex asperiores. Fugit, recusandae nulla. Asperiores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum non illo, ex explicabo corporis sit, nisi autem quidem quia provident doloribus recusandae itaque, neque debitis quas. Aperiam sed excepturi at."
+  ],
+  "facts": [
+    {
+      "label": "Based in",
+      "value": "India"
+    },
+    {
+      "label": "Studying",
+      "value": "Computer Science"
+    },
+    {
+      "label": "Currently",
+      "value": "writing a neural net without asking PyTorch for help"
+    },
+    {
+      "label": "Reading list",
+      "value": "linear algebra, probability, a bit of physics on the side"
+    }
+  ]
+}

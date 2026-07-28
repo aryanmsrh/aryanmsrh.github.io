@@ -1,0 +1,58 @@
+/* =========================================
+   TYPOGRAPHY, BUTTONS & TAGS
+   ========================================= */
+.eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1.5px;
+    background: var(--accent);
+}
+
+.btn {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    padding: 13px 22px;
+    border: 1px solid var(--line);
+    color: var(--off-white);
+    transition:
+        border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        color 0.45s,
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover {
+    border-color: var(--accent);
+    background: rgba(43, 255, 136, 0.08);
+    transform: translateY(-2px);
+}
+
+.btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000000;
+    font-weight: 600;
+}
+
+.tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    color: var(--stone);
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+}

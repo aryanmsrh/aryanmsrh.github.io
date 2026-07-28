@@ -1,0 +1,72 @@
+/* =========================================
+   HERO SECTION
+   ========================================= */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+h1.name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2.8rem, 8vw, 5.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+}
+
+.subtitle {
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-top: 20px;
+}
+
+.tagline {
+    margin-top: 28px;
+    font-size: 15px;
+    color: var(--stone);
+    max-width: 440px;
+    font-family: "JetBrains Mono", monospace;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 44px;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        text-align: center;
+    }
+
+    #hero .tagline {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .hero-actions {
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: calc(50% - 7px);
+        text-align: center;
+    }
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "label": "Coding",
+    "title": "Building a neural network without PyTorch"
+  },
+  {
+    "label": "Mathematics",
+    "title": "Why gradient descent actually works"
+  }
+]

@@ -1,0 +1,39 @@
+/* =========================================
+   LIQUID GLASS CONTAINERS 
+   ========================================= */
+section {
+    position: relative;
+    z-index: 1;
+    padding: 60px 48px;
+    max-width: 1080px;
+    margin: 40px auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(1px) saturate(160%);
+    -webkit-backdrop-filter: blur(1px) saturate(160%);
+
+    will-change: transform, opacity;
+}
+
+section .about-grid,
+section .proj-grid,
+section .think-list,
+section .tl,
+section .video-grid,
+section .contact-grid,
+section .about-text {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    section {
+        width: calc(100% - 32px);
+        margin: 24px auto;
+        padding: 36px 20px;
+        border-radius: 10px;
+        /* Restored clean radius */
+    }
+}

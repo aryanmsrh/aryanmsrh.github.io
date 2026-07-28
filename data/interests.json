@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Algorithms",
+    "glyph": "O(n log n)"
+  },
+  {
+    "label": "Optimization",
+    "glyph": "∇f = 0"
+  },
+  {
+    "label": "Machine Learning",
+    "glyph": "argmin L(θ)"
+  },
+  {
+    "label": "Linear Algebra",
+    "glyph": "Av = λv"
+  },
+  {
+    "label": "Probability",
+    "glyph": "P(A|B)"
+  },
+  {
+    "label": "Physics",
+    "glyph": "F = ma"
+  },
+  {
+    "label": "Systems",
+    "glyph": "throughput / latency"
+  }
+]

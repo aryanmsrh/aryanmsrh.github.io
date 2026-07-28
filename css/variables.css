@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap");
+
+:root {
+    --bg: #000000;
+    --panel: rgba(255, 255, 255, 0.045);
+    --panel-2: rgba(255, 255, 255, 0.08);
+    --line: rgba(255, 255, 255, 0.16);
+    --stone: rgba(255, 255, 255, 0.52);
+    --off-white: #ffffff;
+    --accent: #2bff88;
+    --accent-dim: #17b85e;
+}
