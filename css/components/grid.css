@@ -5,9 +5,23 @@
 /* --- About Grid --- */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 60px;
-    align-items: start;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0;
+    align-items: stretch;
+}
+
+.about-left-col {
+    display: flex;
+    flex-direction: column;
+    padding-right: 40px;
+}
+
+.about-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 1px solid var(--line);
+    padding-left: 40px;
 }
 
 .about-text .about-head-p {
@@ -29,13 +43,11 @@
 
 .about-facts {
     font-family: "JetBrains Mono", monospace;
-    font-size: 12.5px;
+    font-size: 1.2rem;
     color: var(--stone);
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    border-left: 1px solid var(--line);
-    padding-left: 24px;
+    gap: 12px;
 }
 
 .about-facts b {

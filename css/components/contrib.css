@@ -1,0 +1,284 @@
+/* =========================================
+   GITHUB CONTRIBUTION GRAPH COMPONENT
+   ========================================= */
+
+.about-contrib-col {
+    width: 100%;
+}
+
+.github-contrib-card {
+    background: #080a09;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    max-width: 440px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.github-contrib-card:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.contrib-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.contrib-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contrib-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--stone);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.contrib-count-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.contrib-total-num {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--off-white);
+}
+
+.contrib-total-label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    color: var(--stone);
+}
+
+.contrib-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    color: var(--stone);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition:
+        border-color 0.2s,
+        color 0.2s,
+        background 0.2s;
+}
+
+.contrib-profile-link:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--off-white);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.contrib-gh-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+}
+
+.contrib-gh-icon svg {
+    width: 13px;
+    height: 13px;
+}
+
+/* Graph Wrapper & Fluid Responsive Grid */
+.contrib-graph-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 2px;
+}
+
+.contrib-months-header {
+    display: grid;
+    grid-template-columns: repeat(52, minmax(0, 1fr));
+    gap: 1.5px;
+    margin-bottom: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(7px, 1vw, 8.5px);
+    color: var(--stone);
+    width: 100%;
+}
+
+.contrib-month-label {
+    grid-column-span: 4;
+}
+
+.contrib-graph-grid {
+    display: grid;
+    grid-template-columns: repeat(52, minmax(0, 1fr));
+    grid-template-rows: repeat(7, 1fr);
+    grid-auto-flow: column;
+    gap: 1.5px;
+    width: 100%;
+}
+
+.contrib-sq {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1.5px;
+    background: #161b22;
+    outline: 1px solid rgba(255, 255, 255, 0.03);
+    outline-offset: -1px;
+    transition: outline 0.1s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.contrib-sq:hover {
+    outline: 1px solid rgba(255, 255, 255, 0.7);
+    z-index: 2;
+}
+
+/* Authentic GitHub Dark Mode Palette */
+.contrib-sq.level-0 {
+    background: #161b22;
+}
+
+.contrib-sq.level-1 {
+    background: #0e4429;
+}
+
+.contrib-sq.level-2 {
+    background: #006d32;
+}
+
+.contrib-sq.level-3 {
+    background: #26a641;
+}
+
+.contrib-sq.level-4 {
+    background: #39d353;
+}
+
+/* Footer & Legend */
+.contrib-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    color: var(--stone);
+    margin-top: 0;
+}
+
+.contrib-legend-cells {
+    display: flex;
+    align-items: center;
+    gap: 1.5px;
+    width: 48px;
+}
+
+.contrib-legend-cells .contrib-sq {
+    cursor: default;
+}
+
+.contrib-legend-cells .contrib-sq:hover {
+    outline: none;
+}
+
+/* Skeleton Loading State */
+.contrib-skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(52, minmax(0, 1fr));
+    grid-template-rows: repeat(7, 1fr);
+    grid-auto-flow: column;
+    gap: 1.5px;
+    width: 100%;
+}
+
+.contrib-skeleton-sq {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1.5px;
+    background: #161b22;
+    animation: contribPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes contribPulse {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/* Floating Tooltip */
+.contrib-tooltip {
+    position: absolute;
+    z-index: 999;
+    background: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: var(--off-white);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    transform: translate(-50%, -100%);
+    margin-top: -5px;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+}
+
+.contrib-tooltip.active {
+    opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .about-left-col {
+        padding-right: 0;
+    }
+
+    .about-right-col {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .github-contrib-card {
+        padding: 12px 14px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contrib-months-header,
+    .contrib-graph-grid,
+    .contrib-skeleton-grid {
+        gap: 1px;
+    }
+}
