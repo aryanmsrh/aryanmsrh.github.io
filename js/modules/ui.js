@@ -37,3 +37,21 @@ export function initMobileMenu() {
     }
   });
 }
+
+export function initScrollIndicator() {
+  const indicator = document.getElementById("scroll-indicator");
+  if (!indicator) return;
+
+  const handleScroll = () => {
+    const hero = document.getElementById("hero");
+    const threshold = hero ? hero.offsetHeight * 0.3 : 100;
+    if (window.scrollY > threshold) {
+      indicator.classList.add("fade-out");
+    } else {
+      indicator.classList.remove("fade-out");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+}

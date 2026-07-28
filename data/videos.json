@@ -1,10 +1,12 @@
 [
   {
     "label": "Coding",
-    "title": "Building a neural network without PyTorch"
+    "title": "Building a neural network without PyTorch",
+    "youtubeId": "aircAruvnKk"
   },
   {
     "label": "Mathematics",
-    "title": "Why gradient descent actually works"
+    "title": "Why gradient descent actually works",
+    "youtubeId": "IHZwWFHWa-w"
   }
 ]

@@ -1,4 +1,4 @@
-import { initLoader, initMobileMenu } from "./modules/ui.js";
+import { initLoader, initMobileMenu, initScrollIndicator } from "./modules/ui.js";
 import { initScrollObserver } from "./modules/observer.js";
 import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
@@ -11,6 +11,7 @@ import { renderContact } from "./modules/contact.js";
 document.addEventListener("DOMContentLoaded", () => {
   initLoader();
   initMobileMenu();
+  initScrollIndicator();
   initScrollObserver();
   initModalListeners();
   initCanvas();
