@@ -1,7 +1,9 @@
 /**
  * Credentials Section Module
- * Renders detailed credential cards from /data/stats.json
+ * Renders detailed credential cards from /data/stats.json using assets/svgs/
  */
+
+import { getSvg } from "./svg.js";
 
 export async function renderCredentials() {
   const container = document.querySelector(".credentials-grid");
@@ -19,8 +21,13 @@ export async function renderCredentials() {
 
     if (statsList.length === 0) return;
 
+    const arrowSvg = await getSvg("assets/svgs/arrow-up-right.svg");
+    const svgs = await Promise.all(
+      statsList.map((item) => (item.svg ? getSvg(item.svg) : Promise.resolve("")))
+    );
+
     container.innerHTML = statsList
-      .map((item) => {
+      .map((item, index) => {
         const subContent = Array.isArray(item.sub)
           ? item.sub.join(' <span class="dot">•</span> ')
           : item.sub || "";
@@ -29,10 +36,12 @@ export async function renderCredentials() {
           ? `style="--card-accent: ${item.accentColor};"`
           : "";
 
+        const svgContent = svgs[index] || "";
+
         return `
           <div class="credential-card ${item.id || ""}" ${styleAttr}>
             <div class="cred-header">
-              <div class="cred-icon">${item.svg || ""}</div>
+              <div class="cred-icon">${svgContent}</div>
               <div class="cred-main-info">
                 <span class="cred-platform">${item.platform || ""}</span>
                 <div class="cred-value-wrap">
@@ -49,7 +58,7 @@ export async function renderCredentials() {
                 item.url
                   ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="cred-link" aria-label="View ${item.platform} details">
                       View Profile
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                      ${arrowSvg}
                     </a>`
                   : ""
               }

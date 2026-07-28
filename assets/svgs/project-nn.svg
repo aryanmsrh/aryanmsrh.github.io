@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="proj-thumb" viewBox="0 0 300 110">
+  <line x1="10" y1="20" x2="10" y2="90" stroke="#2BFF88" stroke-width="1" opacity=".5"/>
+  <circle cx="30" cy="30" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="30" cy="55" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="30" cy="80" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="150" cy="20" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="150" cy="45" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="150" cy="70" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="150" cy="95" r="4" fill="none" stroke="#2BFF88"/>
+  <circle cx="270" cy="55" r="4" fill="none" stroke="#2BFF88"/>
+  <g stroke="#2BFF88" stroke-width="0.4" opacity=".6">
+    <line x1="34" y1="30" x2="146" y2="20"/>
+    <line x1="34" y1="30" x2="146" y2="45"/>
+    <line x1="34" y1="30" x2="146" y2="70"/>
+    <line x1="34" y1="30" x2="146" y2="95"/>
+    <line x1="34" y1="55" x2="146" y2="20"/>
+    <line x1="34" y1="55" x2="146" y2="45"/>
+    <line x1="34" y1="55" x2="146" y2="70"/>
+    <line x1="34" y1="55" x2="146" y2="95"/>
+    <line x1="34" y1="80" x2="146" y2="20"/>
+    <line x1="34" y1="80" x2="146" y2="45"/>
+    <line x1="34" y1="80" x2="146" y2="70"/>
+    <line x1="34" y1="80" x2="146" y2="95"/>
+    <line x1="154" y1="20" x2="266" y2="55"/>
+    <line x1="154" y1="45" x2="266" y2="55"/>
+    <line x1="154" y1="70" x2="266" y2="55"/>
+    <line x1="154" y1="95" x2="266" y2="55"/>
+  </g>
+</svg>

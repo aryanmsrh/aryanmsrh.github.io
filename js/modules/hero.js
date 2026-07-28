@@ -2,6 +2,8 @@
  * Hero Section Module: Typewriter effect and Stat Highlight Cards
  */
 
+import { getSvg } from "./svg.js";
+
 export function initTypewriter() {
   const textEl = document.getElementById("hero-name-text");
   if (!textEl) return;
@@ -55,8 +57,12 @@ export async function renderHeroStats() {
 
     if (statsList.length === 0) return;
 
+    const svgs = await Promise.all(
+      statsList.map((item) => (item.svg ? getSvg(item.svg) : Promise.resolve("")))
+    );
+
     container.innerHTML = statsList
-      .map((item) => {
+      .map((item, index) => {
         const subContent = Array.isArray(item.sub)
           ? item.sub.join(' <span class="dot">•</span> ')
           : item.sub || "";
@@ -69,9 +75,11 @@ export async function renderHeroStats() {
           ? `style="--card-accent: ${item.accentColor};"`
           : "";
 
+        const svgContent = svgs[index] || "";
+
         return `
           <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="stat-card ${item.id || ""}" ${styleAttr} aria-label="${item.platform || item.id || "Stat"} Profile Stats">
-            <div class="stat-icon-wrapper">${item.svg || ""}</div>
+            <div class="stat-icon-wrapper">${svgContent}</div>
             <div class="stat-info">
               <div class="stat-header">
                 <span class="stat-platform">${item.platform || ""}</span>

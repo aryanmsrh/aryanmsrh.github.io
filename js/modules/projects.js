@@ -2,14 +2,17 @@
  * Project Data & Modal Logic
  */
 
+import { getSvg } from "./svg.js";
+
 export let projects = {};
 
 /**
  * Creates a project card DOM element.
  * @param {Object} p
+ * @param {string} svgContent
  * @returns {HTMLElement}
  */
-function createProjectCard(p) {
+function createProjectCard(p, svgContent = "") {
   const card = document.createElement("div");
   card.className = "proj-card";
 
@@ -20,7 +23,7 @@ function createProjectCard(p) {
     });
   }
 
-  const mediaHTML = p.svg || (p.image ? `<img class="proj-thumb" src="${p.image}" alt="${p.title}" />` : "");
+  const mediaHTML = svgContent || (p.image ? `<img class="proj-thumb" src="${p.image}" alt="${p.title}" />` : "");
 
   const tagsHTML = Array.isArray(p.tags)
     ? p.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")
@@ -81,11 +84,15 @@ export async function renderProjects() {
     container.innerHTML = "";
     projects = {};
 
-    projectsList.forEach((p) => {
+    const svgs = await Promise.all(
+      projectsList.map((p) => (p.svg ? getSvg(p.svg) : Promise.resolve("")))
+    );
+
+    projectsList.forEach((p, index) => {
       if (p.id) {
         projects[p.id] = p;
       }
-      const card = createProjectCard(p);
+      const card = createProjectCard(p, svgs[index] || "");
       container.appendChild(card);
     });
   } catch (err) {

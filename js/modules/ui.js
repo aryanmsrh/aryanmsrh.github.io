@@ -2,6 +2,23 @@
  * UI Utilities and Navigation Handlers
  */
 
+import { getSvg } from "./svg.js";
+
+export async function initSvgElements() {
+  const elements = document.querySelectorAll("[data-svg]");
+  await Promise.all(
+    Array.from(elements).map(async (el) => {
+      const path = el.getAttribute("data-svg");
+      if (path) {
+        const svgText = await getSvg(path);
+        if (svgText) {
+          el.innerHTML = svgText;
+        }
+      }
+    })
+  );
+}
+
 export function initLoader() {
   const hideLoader = () => {
     document.getElementById("loader")?.classList.add("hide");

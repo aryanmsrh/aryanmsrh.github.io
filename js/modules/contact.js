@@ -2,6 +2,8 @@
  * Contact Section Module
  */
 
+import { getSvg } from "./svg.js";
+
 export async function renderContact() {
   const container = document.querySelector(".contact-grid");
   if (!container) return;
@@ -13,11 +15,15 @@ export async function renderContact() {
     }
     const items = await res.json();
 
+    const svgs = await Promise.all(
+      items.map((item) => (item.svg ? getSvg(item.svg) : Promise.resolve("")))
+    );
+
     container.innerHTML = items
       .map(
-        (item) => `
+        (item, index) => `
         <a class="contact-item" href="${item.url}"${item.target ? ` target="${item.target}"` : ""}>
-          ${item.svg}
+          ${svgs[index] || ""}
           <span class="contact-label">${item.label}</span><span class="contact-sub">${item.sub}</span>
         </a>`
       )

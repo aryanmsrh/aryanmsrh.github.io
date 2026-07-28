@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="proj-thumb" viewBox="0 0 300 110">
+  <path d="M40,80 L60,40 L100,40 L110,20 L140,20 L150,40 L190,40 L210,80 Z" fill="none" stroke="#2BFF88" stroke-width="1"/>
+  <circle cx="80" cy="90" r="10" fill="none" stroke="#2BFF88"/>
+  <circle cx="170" cy="90" r="10" fill="none" stroke="#2BFF88"/>
+  <path d="M230,30 Q250,50 230,70" fill="none" stroke="#2BFF88" stroke-width="1"/>
+  <path d="M240,20 Q270,50 240,80" fill="none" stroke="#2BFF88" stroke-width="1" opacity=".5"/>
+</svg>
