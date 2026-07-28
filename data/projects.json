@@ -4,10 +4,10 @@
     "title": "Neural Network Engine",
     "description": "A feedforward network built from raw NumPy — every gradient computed and checked by hand.",
     "tags": ["NumPy", "Backprop", "Adam"],
-    "githubLink": "https://www.github.com/",
-    "liveLink": null,
-    "youtubeLink": null,
-    "svg": "assets/svgs/project-nn.svg",
+    "githubLink": "https://github.com/aryanmsrh/numpy-nn",
+    "liveLink": "https://aryanmsrh.github.io/numpy-nn",
+    "youtubeLink": "https://youtube.com/watch?v=nn-engine-demo",
+    "image": "assets/imgs/project-nn.jpg",
     "question": "Could I build a modular neural network framework using only NumPy — while understanding every line — instead of importing PyTorch?",
     "journey": [
       "I wanted to know what backpropagation actually computes, not just what it's called. So the rule was simple: no autograd, no framework — every gradient derived and written by hand.",
@@ -21,10 +21,10 @@
     "title": "HandMobile",
     "description": "A gesture-controlled robotic car — computer vision mapped directly onto motor signals.",
     "tags": ["OpenCV", "Arduino", "Python"],
-    "githubLink": null,
+    "githubLink": "https://github.com/aryanmsrh/handmobile",
     "liveLink": null,
-    "youtubeLink": null,
-    "svg": "assets/svgs/project-raytracer.svg",
+    "youtubeLink": "https://youtube.com/watch?v=handmobile-demo",
+    "image": "assets/imgs/project-raytracer.jpg",
     "question": "Could hand gestures, read through a webcam, control a physical car in real time with low enough latency to feel direct?",
     "journey": [
       "The interesting part wasn't the car — it was the pipeline from a webcam frame to a motor signal, and how much of that had to happen in milliseconds.",
@@ -41,6 +41,6 @@
     "githubLink": null,
     "liveLink": null,
     "youtubeLink": null,
-    "svg": "assets/svgs/project-quantum.svg"
+    "image": "assets/imgs/project-quantum.jpg"
   }
 ]
