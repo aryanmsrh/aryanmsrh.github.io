@@ -94,7 +94,7 @@ function renderGridAndVectors(state) {
 
   if (mlDistortion > 0.01) {
     const vLen = gridSize * 2.5;
-    const arrowColor = `rgba(${baseAccent}, ${0.1 * mlDistortion * globalAlpha})`;
+    const arrowColor = `rgba(${baseAccent}, ${0.5 * mlDistortion * globalAlpha})`;
     drawArrow(ctx, 0, 0, vLen, 0, arrowColor);
     drawArrow(ctx, 0, 0, 0, -vLen, arrowColor);
   }

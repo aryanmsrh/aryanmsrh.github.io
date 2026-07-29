@@ -111,10 +111,10 @@ h1.name {
     max-width: 240px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--line);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px) saturate(10%);
+    -webkit-backdrop-filter: blur(12px) saturate(10%);
     padding: 12px 16px;
-    border-radius: 6px;
+    border-radius: 0px;
     display: flex;
     align-items: center;
     gap: 12px;

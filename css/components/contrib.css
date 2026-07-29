@@ -7,22 +7,22 @@
 }
 
 .github-contrib-card {
-    background: #080a09;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 8px;
+    background: rgba(7, 7, 7, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0px;
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     position: relative;
     overflow: hidden;
-    max-width: 440px;
+    max-width: 500px;
     width: 100%;
     transition: border-color 0.3s ease;
 }
 
 .github-contrib-card:hover {
-    border-color: rgba(255, 255, 255, 0.45);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .contrib-header {
@@ -124,7 +124,7 @@
 }
 
 .contrib-month-label {
-    grid-column-span: 4;
+    grid-column-end: span 4;
 }
 
 .contrib-graph-grid {

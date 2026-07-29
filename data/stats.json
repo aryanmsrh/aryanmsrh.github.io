@@ -9,7 +9,7 @@
       "sub": ["Dual Degree", "CS & Mathematics"],
       "accentColor": "#3b82f6",
       "content": "Pursuing a dual degree in Computer Science and Mathematics at BITS Pilani. Core focus on algorithms, operating systems, linear algebra, graph theory, and quantitative analysis.",
-      "svg": "assets/svgs/bits-pilani.svg",
+      "svg": "assets/svgs/education.svg",
       "active": true,
       "showInHero": false
     },
@@ -22,7 +22,7 @@
       "sub": ["All India Rank", "National Test"],
       "accentColor": "#ff9f43",
       "content": "Secured 98.93 percentile in JEE Main, ranking among the top candidates nationally in one of India's most competitive engineering entrance exams.",
-      "svg": "assets/svgs/nta.svg",
+      "svg": "assets/svgs/jee.svg",
       "active": true,
       "showInHero": false
     },
