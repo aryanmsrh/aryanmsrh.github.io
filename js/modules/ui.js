@@ -182,3 +182,73 @@ export function initCustomCursor() {
   }
   render();
 }
+
+export function initNavProgress() {
+  const nav = document.querySelector("nav");
+  if (!nav) return;
+
+  let svg = nav.querySelector(".nav-progress-border");
+  let rect = nav.querySelector(".nav-progress-rect");
+
+  if (!svg) {
+    svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "nav-progress-border");
+    svg.setAttribute("aria-hidden", "true");
+
+    rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("class", "nav-progress-rect");
+
+    svg.appendChild(rect);
+    nav.appendChild(svg);
+  }
+
+  let hideTimer = null;
+
+  const resetHideTimer = () => {
+    svg.classList.remove("inactive");
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      svg.classList.add("inactive");
+    }, 1000);
+  };
+
+  const updateProgress = () => {
+    const width = nav.offsetWidth;
+    const height = nav.offsetHeight;
+    const strokeWidth = 1.5;
+
+    if (width === 0 || height === 0) return;
+
+    rect.setAttribute("x", strokeWidth / 2);
+    rect.setAttribute("y", strokeWidth / 2);
+    rect.setAttribute("width", Math.max(0, width - strokeWidth));
+    rect.setAttribute("height", Math.max(0, height - strokeWidth));
+    rect.setAttribute("rx", (height - strokeWidth) / 2);
+
+    const totalLength = rect.getTotalLength();
+    rect.style.strokeDasharray = totalLength;
+
+    const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+    const scrollProgress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+
+    const offset = totalLength * (1 - scrollProgress);
+    rect.style.strokeDashoffset = offset;
+  };
+
+  window.addEventListener("scroll", () => {
+    updateProgress();
+    resetHideTimer();
+  }, { passive: true });
+
+  window.addEventListener("resize", updateProgress);
+
+  requestAnimationFrame(() => {
+    updateProgress();
+    resetHideTimer();
+  });
+
+  setTimeout(() => {
+    updateProgress();
+    resetHideTimer();
+  }, 400);
+}

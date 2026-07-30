@@ -5,17 +5,17 @@
     "items": [
       {
         "title": "Graph Theory & Shortest Paths",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Dijkstra, A*, Tarjan's SCC & Max-Flow algorithms."
+        "url": "https://visualgo.net/en/sssp",
+        "description": "Interactive visualizer for Dijkstra, A*, and Tarjan's SCC algorithms."
       },
       {
         "title": "Dynamic Programming Patterns",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Memoization, DAG pathfinding, and state compression."
+        "url": "https://cp-algorithms.com/dynamic_programming/intro-to-dp.html",
+        "description": "Comprehensive guide on state compression, memoization, and DAG pathfinding."
       },
       {
         "title": "Advanced Data Structures",
-        "url": "https://github.com/aryanmsrh",
+        "url": "https://cp-algorithms.com/data_structures/segment_tree.html",
         "description": "Segment Trees with Lazy Propagation, Trie, and Disjoint Set Union."
       }
     ]
@@ -25,35 +25,35 @@
     "glyph": "∇f = 0",
     "items": [
       {
-        "title": "Convex Optimization & Gradient Methods",
-        "url": "https://github.com/aryanmsrh",
-        "description": "First-order methods, Newton-Raphson, and L-BFGS convergence."
+        "title": "Convex Optimization (Boyd & Vandenberghe)",
+        "url": "https://web.stanford.edu/~boyd/cvxbook/",
+        "description": "The definitive Stanford reference on first-order methods and L-BFGS convergence."
       },
       {
-        "title": "Constrained Optimization",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Lagrange Multipliers, KKT conditions, and Interior Point methods."
+        "title": "Constrained Optimization & KKT",
+        "url": "https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions",
+        "description": "Lagrange Multipliers, KKT conditions, and interior-point methods."
       }
     ]
   },
   {
     "label": "Machine Learning",
-    "glyph": "ŷ ≈ y",
+    "glyph": "argmin L(θ)",
     "items": [
       {
-        "title": "Neural Architecture Mechanics",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Self-Attention, Transformer primitives, and Backpropagation mathematics."
+        "title": "Attention Is All You Need (Vaswani et al.)",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "description": "The landmark 2017 Transformer paper introducing self-attention mechanisms."
       },
       {
-        "title": "Deep Reinforcement Learning",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Policy Gradients, Actor-Critic models, and Q-Learning stability."
+        "title": "OpenAI Spinning Up in Deep RL",
+        "url": "https://spinningup.openai.com/",
+        "description": "Educational resource on Policy Gradients, Actor-Critic, and Q-Learning mathematics."
       },
       {
-        "title": "Generative Modeling & Diffusion",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Score-based models, VAEs, and latent space traversal."
+        "title": "What are Diffusion Models? (Lilian Weng)",
+        "url": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/",
+        "description": "Deep dive into score-based generative models and latent space sampling."
       }
     ]
   },
@@ -62,14 +62,14 @@
     "glyph": "Av = λv",
     "items": [
       {
-        "title": "Spectral Theory & Decompositions",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Eigenvalue decomposition, Singular Value Decomposition (SVD), and QR factorization."
+        "title": "Essence of Linear Algebra (3Blue1Brown)",
+        "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2yVFitg8hEyAB6",
+        "description": "Geometric intuition for eigenvectors, SVD, and matrix transformations."
       },
       {
-        "title": "Dimensionality Reduction",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Principal Component Analysis (PCA), T-SNE, and Manifold learning."
+        "title": "How to Use t-SNE Effectively (Distill.pub)",
+        "url": "https://distill.pub/2016/misread-tsne/",
+        "description": "Interactive article on manifold learning and high-dimensional visualization."
       }
     ]
   },
@@ -78,14 +78,14 @@
     "glyph": "P(A|B)",
     "items": [
       {
-        "title": "Bayesian Inference & Estimation",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Markov Chain Monte Carlo (MCMC), Variational Inference, and MAP estimation."
+        "title": "Seeing Theory: Bayesian Inference",
+        "url": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
+        "description": "Brown University's visual introduction to prior distributions and MAP estimation."
       },
       {
-        "title": "Stochastic Processes",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Continuous-time Markov chains, Random Walks, and Poisson processes."
+        "title": "Interactive Markov Chains (Setosa)",
+        "url": "https://setosa.io/ev/markov-chains/",
+        "description": "Visual explanation of stationary distributions and stochastic state transitions."
       }
     ]
   },
@@ -94,30 +94,30 @@
     "glyph": "F = ma",
     "items": [
       {
-        "title": "Computational Fluid & Particle Dynamics",
-        "url": "https://github.com/aryanmsrh",
-        "description": "N-body gravity simulation, Verlet numerical integration, and SPH fluids."
+        "title": "Smoothed Particle Hydrodynamics (M. Müller)",
+        "url": "https://matthias-research.github.io/pages/publications/sphondam.pdf",
+        "description": "Seminal paper on real-time fluid simulation and particle dynamics."
       },
       {
-        "title": "Quantum Information & Circuits",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Qubit statevectors, quantum gate operators, and entanglement verification."
+        "title": "IBM Quantum Learning Platform",
+        "url": "https://learning.quantum.ibm.com/",
+        "description": "Interactive textbook on qubit statevectors, gate operators, and circuits."
       }
     ]
   },
   {
     "label": "Systems",
-    "glyph": "μs",
+    "glyph": "throughput / latency",
     "items": [
       {
-        "title": "Distributed Consensus & Fault Tolerance",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Raft protocol implementation, vector clocks, and quorum state machines."
+        "title": "In Search of an Understandable Consensus Algorithm (Raft)",
+        "url": "https://raft.github.io/raft.pdf",
+        "description": "Diego Ongaro & John Ousterhout's Stanford paper on distributed consensus."
       },
       {
-        "title": "Low-Level Performance & Parallelism",
-        "url": "https://github.com/aryanmsrh",
-        "description": "Cache-friendly data layout, SIMD vectorization, and lock-free data structures."
+        "title": "What Every Programmer Should Know About Memory",
+        "url": "https://people.freebsd.org/~lstewart/articles/cpumemory.pdf",
+        "description": "Ulrich Drepper's classic guide on CPU caches, NUMA, and SIMD vectorization."
       }
     ]
   }

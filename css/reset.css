@@ -40,37 +40,16 @@ a {
 }
 
 /* =========================================
-   OFF-WHITE PILL SCROLLBAR
+   HIDE SCROLLBAR GLOBALLY
    ========================================= */
 
-/* 1. Track width */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    /* For horizontal scrollbars */
+    width: 0px;
+    height: 0px;
+    display: none;
 }
 
-/* 2. Transparent background track */
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* 3. The Off-White Pill Thumb */
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    transition: background 0.3s ease;
-}
-
-/* 4. Hover state (Lights up on hover) */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--off-white);
-}
-
-/* Firefox Support */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
