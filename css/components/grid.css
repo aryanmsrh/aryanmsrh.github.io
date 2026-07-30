@@ -197,6 +197,105 @@
     z-index: 5;
 }
 
+/* --- Special Aged & Mossy Variant: early-projects --- */
+.proj-card[data-id="early-projects"],
+.proj-card-early-projects {
+    background: linear-gradient(155deg, rgba(12, 18, 14, 0.95), rgba(7, 10, 8, 0.98));
+    border: 1px dashed rgba(80, 115, 75, 0.4);
+    box-shadow: inset 0 0 25px rgba(35, 55, 30, 0.2), 0 8px 30px rgba(0, 0, 0, 0.7);
+    filter: grayscale(0.55) contrast(0.92) brightness(0.50);
+    transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proj-card[data-id="early-projects"]::after,
+.proj-card-early-projects::after {
+    content: "ARCHIVED // 2020-2022";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: #8fa38f;
+    background: rgba(14, 22, 16, 0.85);
+    border: 1px solid rgba(85, 120, 80, 0.35);
+    padding: 3px 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.proj-card[data-id="early-projects"] .proj-media-container,
+.proj-card-early-projects .proj-media-container {
+    background: #070a08;
+}
+
+.proj-card[data-id="early-projects"] .proj-thumb,
+.proj-card-early-projects .proj-thumb {
+    filter: sepia(0.3) hue-rotate(65deg) contrast(0.88);
+    opacity: 0.7;
+    transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.proj-card[data-id="early-projects"] .proj-media-container::after,
+.proj-card-early-projects .proj-media-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 10% 90%, rgba(55, 95, 45, 0.4) 0%, transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(40, 70, 35, 0.3) 0%, transparent 50%),
+        linear-gradient(to bottom, transparent 40%, rgba(7, 10, 8, 0.95) 100%);
+    pointer-events: none;
+}
+
+.proj-card[data-id="early-projects"] .proj-title,
+.proj-card-early-projects .proj-title {
+    color: #b0c2b2;
+    font-weight: 600;
+}
+
+.proj-card[data-id="early-projects"] .proj-desc,
+.proj-card-early-projects .proj-desc {
+    color: #728775;
+}
+
+.proj-card[data-id="early-projects"] .tag,
+.proj-card-early-projects .tag {
+    background: rgba(28, 42, 30, 0.6);
+    color: #8fa38f;
+    border: 1px solid rgba(65, 95, 60, 0.35);
+}
+
+.proj-card[data-id="early-projects"] .proj-open-btn,
+.proj-card-early-projects .proj-open-btn {
+    border-color: rgba(90, 135, 80, 0.6);
+    color: #b0c2b2;
+    background: rgba(12, 18, 14, 0.92);
+}
+
+.proj-card[data-id="early-projects"]:hover,
+.proj-card-early-projects:hover {
+    filter: grayscale(0.25) contrast(0.96) brightness(0.95);
+    border-color: rgba(110, 160, 100, 0.65);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(60, 105, 50, 0.25), inset 0 0 20px rgba(50, 85, 40, 0.25);
+}
+
+.proj-card[data-id="early-projects"]:hover .proj-thumb,
+.proj-card-early-projects:hover .proj-thumb {
+    filter: sepia(0.15) hue-rotate(50deg) contrast(0.95);
+    opacity: 0.88;
+}
+
+.proj-card[data-id="early-projects"]:hover .proj-open-btn,
+.proj-card-early-projects:hover .proj-open-btn {
+    background: rgba(60, 100, 55, 0.9);
+    color: #ffffff;
+    border-color: #7ab372;
+}
+
 /* --- Video Grid --- */
 .video-grid {
     display: grid;

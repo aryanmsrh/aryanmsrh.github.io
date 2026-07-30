@@ -56,6 +56,11 @@ function createProjectCard(p) {
   const card = document.createElement("div");
   card.className = "proj-card";
 
+  if (p.id) {
+    card.dataset.id = p.id;
+    card.classList.add(`proj-card-${p.id}`);
+  }
+
   if (p.id && (p.question || p.journey)) {
     card.addEventListener("click", (e) => {
       openModal(p.id);

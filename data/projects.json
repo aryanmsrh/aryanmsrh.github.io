@@ -1,12 +1,12 @@
 [
   {
-    "id": "nn",
+    "id": "neural-net",
     "title": "Neural Network Engine",
     "description": "A feedforward network built from raw NumPy — every gradient computed and checked by hand.",
     "tags": ["NumPy", "Backprop", "Adam"],
     "githubLink": "https://github.com/aryanmsrh/numpy-nn",
-    "liveLink": "https://aryanmsrh.github.io/numpy-nn",
-    "youtubeLink": "https://youtube.com/watch?v=nn-engine-demo",
+    "liveLink": null,
+    "youtubeLink": "https://www.youtube.com/watch?v=WFLVy8av3O0",
     "image": "assets/imgs/project-nn.png",
     "question": "Could I build a modular neural network framework using only NumPy — while understanding every line — instead of importing PyTorch?",
     "journey": [
@@ -14,24 +14,7 @@
       "The engine ended up with dense layers, He initialization, SGD and Adam optimizers, and a softmax cross-entropy loss built from the definition upward.",
       "It reached 97% accuracy on MNIST. The number mattered less than being able to explain, at every layer, exactly why the loss went down."
     ],
-    "stack": "NumPy · Python · matplotlib for diagnostics"
-  },
-  {
-    "id": "hm",
-    "title": "HandMobile",
-    "description": "A gesture-controlled robotic car — computer vision mapped directly onto motor signals.",
-    "tags": ["OpenCV", "Arduino", "Python"],
-    "githubLink": "https://github.com/aryanmsrh/handmobile",
-    "liveLink": null,
-    "youtubeLink": "https://youtube.com/watch?v=handmobile-demo",
-    "image": "assets/imgs/test.png",
-    "question": "Could hand gestures, read through a webcam, control a physical car in real time with low enough latency to feel direct?",
-    "journey": [
-      "The interesting part wasn't the car — it was the pipeline from a webcam frame to a motor signal, and how much of that had to happen in milliseconds.",
-      "Hand landmarks were tracked with OpenCV, mapped to a small gesture vocabulary, and sent over serial to an Arduino driving the motors.",
-      "The hardest bug wasn't code — it was a loose ground wire that made 'stop' occasionally mean 'go'."
-    ],
-    "stack": "OpenCV · Python · Arduino · C++"
+    "stack": "Mathematics · NumPy · Python"
   },
   {
     "id": "more",
@@ -41,6 +24,26 @@
     "githubLink": null,
     "liveLink": null,
     "youtubeLink": null,
-    "image": "assets/imgs/more-to-come.gif"
+    "question":"What's a question?",
+    "journey":["Still figuring it out."],
+    "image": "assets/imgs/more-to-come.gif",
+    "stack": "Socrates · The Method"
+  },
+  {
+    "id": "early-projects",
+    "title": "Early Projects (2020-2022)",
+    "description": "Archived GitHub. It contains my first experiments from ages 11-13, before rebuilding from first principles. No longer maintained, last significant update was in 2022.",
+    "tags": ["Fossil", "Dilapidated", "Jurrassic"],
+    "githubLink": "https://github.com/ahmishra",
+    "liveLink": null,
+    "youtubeLink": null,
+    "image": "assets/imgs/archived.png",
+    "question": "What did the first lines of code look like before frameworks, abstraction layers, or formal software engineering?",
+    "journey": [
+      "Between 2020 and 2022, learning wasn't driven by formal roadmaps — it was pure trial, error, and hacking together scripts to see what moved on screen.",
+      "This repository holds those initial experiments: early OpenCV gesture loops, basic motor drivers, serial controls, and unpolished automation scripts.",
+      "Though long retired and unmaintained, these projects are preserved as a relic of the original spark that led to rebuilding systems from first principles."
+    ],
+    "stack": "Curiosity · Interest · Free Time"
   }
 ]
