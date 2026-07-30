@@ -132,8 +132,6 @@ h1.name {
 .stat-card:hover {
     border-color: var(--card-accent);
     background: color-mix(in srgb, var(--card-accent) 6%, transparent);
-    box-shadow: 0 0 24px color-mix(in srgb, var(--card-accent) 15%, transparent),
-                inset 0 0 12px color-mix(in srgb, var(--card-accent) 5%, transparent);
     transform: translateY(-3px);
 }
 

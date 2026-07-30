@@ -1,4 +1,4 @@
-import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements } from "./modules/ui.js";
+import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements, initMouseShadow, initCustomCursor } from "./modules/ui.js";
 import { initScrollObserver } from "./modules/observer.js";
 import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initLoader();
   initMobileMenu();
   initScrollIndicator();
+  initMouseShadow();
+  initCustomCursor();
   initScrollObserver();
   initModalListeners();
   initCanvas();

@@ -4,7 +4,7 @@
     "title": "Neural Network Engine",
     "description": "A feedforward network built from raw NumPy — every gradient computed and checked by hand.",
     "tags": ["NumPy", "Backprop", "Adam"],
-    "githubLink": "https://github.com/aryanmsrh/numpy-nn",
+    "githubLink": "https://github.com/aryanmsrh/neural-engine-numpy",
     "liveLink": null,
     "youtubeLink": "https://www.youtube.com/watch?v=WFLVy8av3O0",
     "image": "assets/imgs/project-nn.png",

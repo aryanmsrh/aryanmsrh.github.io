@@ -130,14 +130,14 @@ export async function renderProjects() {
     projects = {};
 
     // Cache icons for CTA buttons in modal
-    const [ghSvg, grSvg, ytSvg] = await Promise.all([
+    const [ghSvg, extSvg, ytSvg] = await Promise.all([
       getSvg("assets/svgs/github.svg"),
-      getSvg("assets/svgs/grid.svg"),
+      getSvg("assets/svgs/external-link.svg"),
       getSvg("assets/svgs/youtube.svg")
     ]);
 
     modalIcons.github = ghSvg;
-    modalIcons.grid = grSvg;
+    modalIcons.external = extSvg;
     modalIcons.youtube = ytSvg;
 
     projectsList.forEach((p) => {
@@ -185,10 +185,10 @@ export function openModal(id) {
           ${
             p.liveLink
               ? `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" class="modal-cta-btn" title="Live Demo" aria-label="Live Demo">
-                  ${modalIcons.grid}
+                  ${modalIcons.external}
                 </a>`
               : `<span class="modal-cta-btn disabled" title="Live Demo (Unavailable)" aria-label="Live Demo (Unavailable)">
-                  ${modalIcons.grid}
+                  ${modalIcons.external}
                 </span>`
           }
           ${

@@ -1,27 +1,27 @@
 [
   {
-    "year": "2022",
-    "title": "HandMobile",
-    "description": "First real hardware project — gesture control on a robotic car."
-  },
-  {
-    "year": "2023",
-    "title": "Arduino projects",
-    "description": "A year of small circuits, sensors, and things that occasionally caught fire."
-  },
-  {
-    "year": "2025",
-    "title": "Neural Network Engine",
-    "description": "Backpropagation from scratch, no shortcuts, 97% on MNIST."
+    "year": "Future",
+    "title": "Continuous Convergence",
+    "description": "Exploring high-performance parallel architectures, low-latency distributed consensus systems, and first-principles algorithm design."
   },
   {
     "year": "2026",
-    "title": "BITS Pilani",
-    "description": "Hyderabad Campus."
+    "title": "BITS Pilani — Hyderabad Campus",
+    "description": "Pursuing Computer Science & Mathematics. Specializing in systems architecture, algorithm optimization, and computational theory while building production-grade software."
   },
   {
-    "year": "Future",
-    "title": "…",
-    "description": "Still converging."
+    "year": "2025",
+    "title": "Neural Network Engine & Deep Learning Systems",
+    "description": "Engineered a custom matrix autodiff and neural network framework from scratch. Built backpropagation routines without external ML libraries, achieving 97%+ test accuracy on MNIST."
+  },
+  {
+    "year": "2023",
+    "title": "Arduino & Embedded Systems Explorations",
+    "description": "A focused year exploring low-level hardware interfaces, sensor fusion, real-time microcontrollers, custom PCB logic, and embedded firmware."
+  },
+  {
+    "year": "2022",
+    "title": "HandMobile Gesture Robotics",
+    "description": "Designed and assembled my first real hardware-software integration project — controlling a robotic vehicle in real time using IMU gesture tracking and wireless telemetry."
   }
 ]

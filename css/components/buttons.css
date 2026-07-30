@@ -3,7 +3,7 @@
    ========================================= */
 .eyebrow {
     font-family: "JetBrains Mono", monospace;
-    font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+    font-size: clamp(1.2rem, 3.2vw, 1.6rem);
     font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.1em;
@@ -17,9 +17,36 @@
 
 .eyebrow::before {
     content: "";
-    width: 36px;
+    width: 32px;
     height: 2px;
     background: var(--accent);
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .eyebrow {
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+        gap: 12px;
+        letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+        width: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .eyebrow {
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+        gap: 10px;
+        letter-spacing: 0.06em;
+    }
+
+    .eyebrow::before {
+        width: 20px;
+    }
 }
 
 .btn {

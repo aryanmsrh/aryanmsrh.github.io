@@ -1,30 +1,124 @@
 [
   {
     "label": "Algorithms",
-    "glyph": "O(n log n)"
+    "glyph": "O(n log n)",
+    "items": [
+      {
+        "title": "Graph Theory & Shortest Paths",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Dijkstra, A*, Tarjan's SCC & Max-Flow algorithms."
+      },
+      {
+        "title": "Dynamic Programming Patterns",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Memoization, DAG pathfinding, and state compression."
+      },
+      {
+        "title": "Advanced Data Structures",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Segment Trees with Lazy Propagation, Trie, and Disjoint Set Union."
+      }
+    ]
   },
   {
     "label": "Optimization",
-    "glyph": "∇f = 0"
+    "glyph": "∇f = 0",
+    "items": [
+      {
+        "title": "Convex Optimization & Gradient Methods",
+        "url": "https://github.com/aryanmsrh",
+        "description": "First-order methods, Newton-Raphson, and L-BFGS convergence."
+      },
+      {
+        "title": "Constrained Optimization",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Lagrange Multipliers, KKT conditions, and Interior Point methods."
+      }
+    ]
   },
   {
     "label": "Machine Learning",
-    "glyph": "argmin L(θ)"
+    "glyph": "ŷ ≈ y",
+    "items": [
+      {
+        "title": "Neural Architecture Mechanics",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Self-Attention, Transformer primitives, and Backpropagation mathematics."
+      },
+      {
+        "title": "Deep Reinforcement Learning",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Policy Gradients, Actor-Critic models, and Q-Learning stability."
+      },
+      {
+        "title": "Generative Modeling & Diffusion",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Score-based models, VAEs, and latent space traversal."
+      }
+    ]
   },
   {
     "label": "Linear Algebra",
-    "glyph": "Av = λv"
+    "glyph": "Av = λv",
+    "items": [
+      {
+        "title": "Spectral Theory & Decompositions",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Eigenvalue decomposition, Singular Value Decomposition (SVD), and QR factorization."
+      },
+      {
+        "title": "Dimensionality Reduction",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Principal Component Analysis (PCA), T-SNE, and Manifold learning."
+      }
+    ]
   },
   {
     "label": "Probability",
-    "glyph": "P(A|B)"
+    "glyph": "P(A|B)",
+    "items": [
+      {
+        "title": "Bayesian Inference & Estimation",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Markov Chain Monte Carlo (MCMC), Variational Inference, and MAP estimation."
+      },
+      {
+        "title": "Stochastic Processes",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Continuous-time Markov chains, Random Walks, and Poisson processes."
+      }
+    ]
   },
   {
     "label": "Physics",
-    "glyph": "F = ma"
+    "glyph": "F = ma",
+    "items": [
+      {
+        "title": "Computational Fluid & Particle Dynamics",
+        "url": "https://github.com/aryanmsrh",
+        "description": "N-body gravity simulation, Verlet numerical integration, and SPH fluids."
+      },
+      {
+        "title": "Quantum Information & Circuits",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Qubit statevectors, quantum gate operators, and entanglement verification."
+      }
+    ]
   },
   {
     "label": "Systems",
-    "glyph": "throughput / latency"
+    "glyph": "μs",
+    "items": [
+      {
+        "title": "Distributed Consensus & Fault Tolerance",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Raft protocol implementation, vector clocks, and quorum state machines."
+      },
+      {
+        "title": "Low-Level Performance & Parallelism",
+        "url": "https://github.com/aryanmsrh",
+        "description": "Cache-friendly data layout, SIMD vectorization, and lock-free data structures."
+      }
+    ]
   }
 ]
