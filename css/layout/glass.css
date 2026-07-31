@@ -19,10 +19,12 @@ section {
 }
 
 section .about-grid,
+section .credentials-grid,
+section .skills-grid,
 section .proj-grid,
 section .think-list,
 section .tl,
-section .video-grid,
+section .journal-grid,
 section .contact-grid,
 section .about-text {
     text-align: left;

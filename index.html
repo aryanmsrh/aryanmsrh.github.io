@@ -3,16 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aryan Mishra</title>
+    <link
+      rel="preload"
+      href="assets/fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/inter.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/jetbrains-mono.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="css/main.css" />
+    <title>Aryan Mishra</title>
   </head>
 
   <body>
     <!-- LOADER -->
     <div id="loader">
-      <span id="loader-text">
-        Compiling from scratch...<span class="cursor"></span>
-      </span>
+      <div class="loader-content">
+        <svg
+          class="loader-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+        >
+          <g
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="42" y1="16" x2="22" y2="48" />
+            <line x1="30" y1="35" x2="42" y2="48" />
+          </g>
+        </svg>
+        <span id="loader-text">
+          COMPILING FROM SCRATCH<span class="cursor"></span>
+        </span>
+      </div>
     </div>
 
     <!-- MATH CANVAS -->
@@ -32,7 +72,12 @@
         <a href="#contact">Contact</a>
       </div>
 
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" data-svg="assets/svgs/hamburger.svg"></button>
+      <button
+        class="hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+        data-svg="assets/svgs/hamburger.svg"
+      ></button>
     </nav>
 
     <!-- MOBILE NAV -->
@@ -46,7 +91,10 @@
 
     <!-- HERO SECTION -->
     <section id="hero">
-      <h1 class="name"><span id="hero-name-text">ARYAN MISHRA</span><span class="hero-cursor">|</span></h1>
+      <h1 class="name">
+        <span id="hero-name-text">ARYAN MISHRA</span
+        ><span class="hero-cursor">|</span>
+      </h1>
       <p class="subtitle">Computer Science & Mathematics</p>
       <p class="tagline">Building systems from first principles.</p>
 
@@ -55,10 +103,40 @@
 
       <!-- HERO ACTION BUTTONS -->
       <div class="hero-actions">
-        <a class="btn hero-btn" href="#projects" aria-label="View Projects" data-tooltip="View Projects" data-svg="assets/svgs/grid.svg"></a>
-        <a class="btn hero-btn" href="https://github.com/aryanmsrh" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" data-tooltip="GitHub Profile" data-svg="assets/svgs/github.svg"></a>
-        <a class="btn hero-btn" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" data-tooltip="YouTube Channel" data-svg="assets/svgs/youtube.svg"></a>
-        <a class="btn hero-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="View Resume" data-tooltip="View Resume" data-svg="assets/svgs/resume.svg"></a>
+        <a
+          class="btn hero-btn"
+          href="#projects"
+          aria-label="View Projects"
+          data-tooltip="View Projects"
+          data-svg="assets/svgs/grid.svg"
+        ></a>
+        <a
+          class="btn hero-btn"
+          href="https://github.com/aryanmsrh"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          data-tooltip="GitHub Profile"
+          data-svg="assets/svgs/github.svg"
+        ></a>
+        <a
+          class="btn hero-btn"
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube Channel"
+          data-tooltip="YouTube Channel"
+          data-svg="assets/svgs/youtube.svg"
+        ></a>
+        <a
+          class="btn hero-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View Resume"
+          data-tooltip="View Resume"
+          data-svg="assets/svgs/resume.svg"
+        ></a>
       </div>
       <a
         href="#about"
@@ -84,7 +162,9 @@
     <!-- SKILLS SECTION -->
     <section id="skills" class="reveal">
       <div class="eyebrow">Skills</div>
-      <p class="section-tagline">Languages, systems, and core mathematical domains</p>
+      <p class="section-tagline">
+        Languages, systems, and core mathematical domains
+      </p>
       <div class="skills-grid"></div>
     </section>
 

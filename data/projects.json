@@ -24,8 +24,11 @@
     "githubLink": null,
     "liveLink": null,
     "youtubeLink": null,
-    "question":"What's a question?",
-    "journey":["Still figuring it out."],
+    "question": "What happens at the boundary where mathematical theory meets silicon?",
+    "journey": [
+      "Currently researching parallel matrix algorithms, distributed consensus, and low-latency systems.",
+      "New write-ups and repos will be documented here as projects converge."
+    ],
     "image": "assets/imgs/more-to-come.gif",
     "stack": "Socrates · The Method"
   },

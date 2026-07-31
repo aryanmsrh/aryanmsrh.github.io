@@ -25,10 +25,10 @@ export function initLoader() {
   };
 
   if (document.readyState === "complete") {
-    setTimeout(hideLoader, 200);
+    setTimeout(hideLoader, 1400);
   } else {
     window.addEventListener("load", () => {
-      setTimeout(hideLoader, 200);
+      setTimeout(hideLoader, 1400);
     });
   }
 }

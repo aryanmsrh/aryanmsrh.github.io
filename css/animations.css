@@ -11,18 +11,34 @@
     position: fixed;
     inset: 0;
     z-index: 999;
-    background: var(--bg);
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.loader-logo {
+    width: clamp(110px, 22vw, 160px);
+    height: clamp(110px, 22vw, 160px);
+    display: block;
 }
 
 #loader span {
     font-family: "JetBrains Mono", monospace;
-    font-size: 14px;
-    letter-spacing: 0.15em;
+    font-size: clamp(12px, 2.5vw, 15px);
+    letter-spacing: 0.2em;
     color: var(--stone);
+    text-transform: uppercase;
 }
 
 #loader .cursor {
