@@ -4,7 +4,7 @@
 
 /* --- Think List --- */
 .think-list {
-    margin-top: 10px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -31,7 +31,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 24px;
-    cursor: pointer;
     user-select: none;
     outline: none;
     transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -67,7 +66,6 @@
     color: rgba(200, 200, 200, 0.8);
     font-family: "JetBrains Mono", monospace;
     font-size: 12px;
-    cursor: pointer;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -81,9 +79,9 @@
 }
 
 .think-item.open .think-toggle-badge {
-    background: var(--accent);
+    background: rgba(0, 150, 0, 1.0);
     color: #000;
-    border-color: var(--accent);
+    /* border-color: var(--accent); */
     font-weight: 600;
 }
 
@@ -127,7 +125,7 @@
 .think-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
+    gap: 8px;
     padding: 0 24px 22px 24px;
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
     margin-top: 4px;
@@ -146,7 +144,6 @@
     border-radius: 0px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
 }
 
 .think-link:hover {
@@ -213,8 +210,8 @@
     left: 5px;
     top: 7px;
     bottom: 32px;
-    width: 1px;
-    background: var(--line);
+    width: 1.5px;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 /* Top Hollow Arrowhead pointing Up (indicating future growth) */
@@ -225,7 +222,7 @@
     top: 0px;
     width: 12px;
     height: 10px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5 8.5 6 2 10.5 8.5"/></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5 8.5 6 2 10.5 8.5"/></svg>');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -242,10 +239,10 @@
 .tl-item::before {
     content: "";
     position: absolute;
-    left: -36px;
-    top: 4px;
-    width: 9px;
-    height: 9px;
+    left: -39px;
+    top: 9px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--bg);
     border: 1px solid var(--accent);
@@ -259,14 +256,13 @@
     bottom: 0px;
     width: 15px;
     height: 2px;
-    background: var(--line);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .tl-year {
     font-family: "JetBrains Mono", monospace;
     color: var(--accent);
-    font-size: 12.5px;
-    margin-bottom: 6px;
+    font-size: 1.25rem;
 }
 
 .tl-title {

@@ -1,4 +1,4 @@
-import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements, initMouseShadow, initCustomCursor, initNavProgress } from "./modules/ui.js";
+import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements, initMouseShadow, initCustomCursor, initNavProgress, initFooterClock, initBackToTop } from "./modules/ui.js";
 import { initScrollObserver } from "./modules/observer.js";
 import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
@@ -11,7 +11,7 @@ import { renderJournal } from "./modules/journal.js";
 import { renderContact } from "./modules/contact.js";
 import { initTypewriter, renderHeroStats } from "./modules/hero.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initSvgElements();
   initLoader();
   initMobileMenu();
@@ -19,16 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initMouseShadow();
   initCustomCursor();
   initNavProgress();
-  initScrollObserver();
-  initModalListeners();
+  initFooterClock();
+  initBackToTop();
   initCanvas();
   initTypewriter();
-  renderHeroStats();
-  renderAbout();
-  renderCredentials();
-  renderSkills();
-  renderTimeline();
-  renderInterests();
-  renderJournal();
-  renderContact();
+
+  await Promise.all([
+    renderHeroStats(),
+    renderAbout(),
+    renderCredentials(),
+    renderSkills(),
+    renderTimeline(),
+    renderInterests(),
+    renderJournal(),
+    renderContact()
+  ]);
+
+  initScrollObserver();
+  initModalListeners();
 });

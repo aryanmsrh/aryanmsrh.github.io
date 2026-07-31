@@ -1,7 +1,7 @@
 [
   {
     "label": "Algorithms",
-    "glyph": "O(n log n)",
+    "glyph": "O(log n)",
     "items": [
       {
         "title": "Graph Theory & Shortest Paths",
@@ -38,7 +38,7 @@
   },
   {
     "label": "Machine Learning",
-    "glyph": "argmin L(θ)",
+    "glyph": "ŷ ≈ y",
     "items": [
       {
         "title": "Attention Is All You Need (Vaswani et al.)",
@@ -107,7 +107,7 @@
   },
   {
     "label": "Systems",
-    "glyph": "throughput / latency",
+    "glyph": "I/O",
     "items": [
       {
         "title": "In Search of an Understandable Consensus Algorithm (Raft)",

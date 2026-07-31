@@ -19,9 +19,9 @@ export async function renderSkills() {
         const pillsHTML = cat.skills
           .map(
             (s) => `
-          <span class="skill-pill ${s.highlight ? "highlight" : ""}">
+          <span class="skill-pill ${s.level ? `tag-${s.level.toLowerCase()}` : ""}">
             <span class="skill-name">${s.name}</span>
-            ${s.level ? `<span class="skill-level">• ${s.level}</span>` : ""}
+            ${s.level ? `<span class="skill-level tag-${s.level.toLowerCase()}">• ${s.level}</span>` : ""}
           </span>
         `
           )

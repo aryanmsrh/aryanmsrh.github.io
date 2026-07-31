@@ -2,33 +2,27 @@
  * Contact Section Module
  */
 
-import { getSvg } from "./svg.js";
-
 export async function renderContact() {
-  const container = document.querySelector(".contact-grid");
-  if (!container) return;
+  const form = document.getElementById("contact-form");
+  if (!form) return;
 
-  try {
-    const res = await fetch("/data/contact.json");
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const items = await res.json();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const btn = form.querySelector("button[type='submit']");
+    if (!btn) return;
 
-    const svgs = await Promise.all(
-      items.map((item) => (item.svg ? getSvg(item.svg) : Promise.resolve("")))
-    );
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = "<span>Message Sent!</span>";
+    btn.style.borderColor = "var(--accent)";
+    btn.style.color = "var(--accent)";
 
-    container.innerHTML = items
-      .map(
-        (item, index) => `
-        <a class="contact-item" href="${item.url}"${item.target ? ` target="${item.target}"` : ""}>
-          ${svgs[index] || ""}
-          <span class="contact-label">${item.label}</span><span class="contact-sub">${item.sub}</span>
-        </a>`
-      )
-      .join("");
-  } catch (err) {
-    console.error("Error loading contact data:", err);
-  }
+    setTimeout(() => {
+      form.reset();
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+      btn.style.borderColor = "";
+      btn.style.color = "";
+    }, 3000);
+  });
 }

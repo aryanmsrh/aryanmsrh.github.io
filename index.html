@@ -25,10 +25,19 @@
       crossorigin
     />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
     <link rel="stylesheet" href="css/main.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    ></script>
     <title>Aryan Mishra</title>
   </head>
 
@@ -68,31 +77,32 @@
       <svg class="nav-progress-border" aria-hidden="true">
         <rect class="nav-progress-rect"></rect>
       </svg>
-      <span class="nav-mark">aryanmsrh</span>
-      <div class="nav-links">
+      <div class="nav-top-row">
+        <span class="nav-mark">aryanmsrh</span>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#credentials">Credentials</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button
+          class="hamburger"
+          id="hamburger-btn"
+          aria-label="Toggle menu"
+          data-svg="assets/svgs/hamburger.svg"
+        ></button>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu">
         <a href="#about">About</a>
         <a href="#credentials">Credentials</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
-
-      <button
-        class="hamburger"
-        id="hamburger-btn"
-        aria-label="Toggle menu"
-        data-svg="assets/svgs/hamburger.svg"
-      ></button>
     </nav>
-
-    <!-- MOBILE NAV -->
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="#about">About</a>
-      <a href="#credentials">Credentials</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
 
     <!-- HERO SECTION -->
     <section id="hero">
@@ -167,16 +177,17 @@
     <!-- SKILLS SECTION -->
     <section id="skills" class="reveal">
       <div class="eyebrow">Skills</div>
-      <p class="section-tagline">
-        Languages, systems, and core mathematical domains
-      </p>
+      <p class="section-tagline">Command over various domains</p>
       <div class="skills-grid"></div>
     </section>
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="reveal">
       <div class="eyebrow">Projects</div>
-      <h2 class="serif" style="font-size: 2rem; font-weight: 500">
+      <h2
+        class="serif"
+        style="font-size: 1.2rem; font-weight: 500; margin-top: -10px"
+      >
         Things I built to answer a question.
       </h2>
       <div class="proj-grid"></div>
@@ -205,13 +216,187 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="reveal">
       <div class="eyebrow">Contact</div>
-      <div class="contact-grid"></div>
+      <div class="contact-layout">
+        <!-- LEFT: Contact Info & GitHub + LinkedIn buttons -->
+        <div class="contact-info-container">
+          <h2 class="contact-heading">Get in touch</h2>
+          <p class="contact-tagline">
+            Have a project in mind, a technical question, or want to collaborate? Feel free to reach out directly or send a message.
+          </p>
+
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="detail-label">DIRECT EMAIL //</span>
+              <a href="mailto:aryanmishra.dev@gmail.com" class="detail-value">aryanmishra.dev@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="detail-label">LOCATION //</span>
+              <span class="detail-value">India / IST (UTC+5:30)</span>
+            </div>
+          </div>
+
+          <div class="contact-social-buttons">
+            <a
+              href="https://github.com/aryanmsrh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-social-btn"
+              data-svg="assets/svgs/github.svg"
+            >
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/aryanmsrh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-social-btn"
+              data-svg="assets/svgs/linkedin.svg"
+            >
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact Form -->
+        <div class="contact-form-container">
+          <form id="contact-form" class="contact-form">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="contact-name">NAME</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">EMAIL</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="your.email@domain.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">SUBJECT</label>
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                placeholder="Project Inquiry / Hello"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">MESSAGE</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn contact-submit-btn">
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-      <p>Built from scratch.<br />Like most of the projects above.</p>
-      <span class="mono">© 2026 — designed for clarity, not decoration</span>
+    <footer class="footer-container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="footer-brand">
+            <span class="footer-logo">aryanmsrh</span>
+            <div class="footer-status">
+              <span class="status-dot"></span>
+              <span>AVAILABLE FOR COLLABORATIONS</span>
+            </div>
+          </div>
+
+          <div class="footer-socials">
+            <a
+              href="https://instagram.com/aryanmsrh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-pill"
+              aria-label="Instagram Profile"
+              data-svg="assets/svgs/instagram.svg"
+            ></a>
+            <a
+              href="https://linkedin.com/in/aryanmsrh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-pill"
+              aria-label="LinkedIn Profile"
+              data-svg="assets/svgs/linkedin.svg"
+            ></a>
+            <a
+              href="https://github.com/aryanmsrh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-pill"
+              aria-label="GitHub Profile"
+              data-svg="assets/svgs/github.svg"
+            ></a>
+            <a
+              href="mailto:aryanmishra.dev@gmail.com"
+              class="footer-social-pill"
+              aria-label="Send Email"
+              data-svg="assets/svgs/email.svg"
+            ></a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-pill"
+              aria-label="YouTube Channel"
+              data-svg="assets/svgs/youtube.svg"
+            ></a>
+          </div>
+
+          <div class="footer-cli-nav">
+            <div class="cli-nav-title">QUICK_JUMP:</div>
+            <div class="cli-links-grid">
+              <a href="#about" class="footer-cli-link">> cd ./about</a>
+              <a href="#credentials" class="footer-cli-link">> cd ./credentials</a>
+              <a href="#skills" class="footer-cli-link">> cd ./skills</a>
+              <a href="#projects" class="footer-cli-link">> cd ./projects</a>
+              <a href="#timeline" class="footer-cli-link">> cd ./timeline</a>
+              <a href="#journal" class="footer-cli-link">> cd ./journal</a>
+              <a href="#contact" class="footer-cli-link">> cd ./contact</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <button id="back-to-top" class="footer-top-btn" aria-label="Back to top">
+            <span>↑ TOP</span>
+          </button>
+
+          <div class="footer-clock-box">
+            <span class="clock-label">SYS_TIME //</span>
+            <span id="footer-local-time" class="clock-value">--:--:-- IST</span>
+          </div>
+
+          <div class="footer-legacy-text">
+            <p>Built from scratch.<br />Like most of the projects above.</p>
+            <span class="mono">© 2026 — designed for clarity, not decoration</span>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <div id="modal-backdrop" onclick="if (event.target === this) closeModal();">

@@ -4,23 +4,37 @@
 .eyebrow {
     font-family: "JetBrains Mono", monospace;
     font-size: clamp(1.2rem, 3.2vw, 1.6rem);
-    font-weight: 600;
+    font-weight: 900;
     color: var(--accent);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 14px;
+    opacity: 0;
+    transform: translateX(-14px);
+    transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
 .eyebrow::before {
     content: "";
-    width: 32px;
+    width: 0px;
     height: 2px;
     background: var(--accent);
     flex-shrink: 0;
+    transition: width 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.eyebrow.in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.eyebrow.in::before {
+    width: 32px;
 }
 
 @media (max-width: 768px) {
@@ -31,7 +45,7 @@
         letter-spacing: 0.08em;
     }
 
-    .eyebrow::before {
+    .eyebrow.in::before {
         width: 24px;
     }
 }
@@ -44,7 +58,7 @@
         letter-spacing: 0.06em;
     }
 
-    .eyebrow::before {
+    .eyebrow.in::before {
         width: 20px;
     }
 }

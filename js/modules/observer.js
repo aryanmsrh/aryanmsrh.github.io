@@ -3,16 +3,29 @@
  */
 
 export function initScrollObserver() {
-  const observer = new IntersectionObserver(
+  const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) e.target.classList.add("in");
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.1 }
+  );
+
+  const eyebrowObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("in");
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
   );
 
   document
     .querySelectorAll(".reveal")
-    .forEach((el) => observer.observe(el));
+    .forEach((el) => sectionObserver.observe(el));
+
+  document
+    .querySelectorAll(".eyebrow")
+    .forEach((el) => eyebrowObserver.observe(el));
 }

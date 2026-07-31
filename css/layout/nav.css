@@ -8,10 +8,10 @@ nav {
     transform: translateX(-50%) translateY(-100px);
     z-index: 100;
     display: flex;
-    align-items: center;
-    gap: 44px;
+    flex-direction: column;
+    align-items: stretch;
     padding: 14px 30px;
-    border-radius: 999px;
+    border-radius: 32px;
     max-width: 92vw;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -22,6 +22,15 @@ nav {
         inset 0 -1px 12px rgba(43, 255, 136, 0.05),
         0 12px 40px rgba(0, 0, 0, 0.55);
     opacity: 0;
+    transition: border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-top-row {
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    width: 100%;
 }
 
 /* --- Nav Scroll Progress Wrapping Border --- */
@@ -33,7 +42,7 @@ nav {
     pointer-events: none;
     z-index: 10;
     overflow: visible;
-    border-radius: 999px;
+    border-radius: inherit;
     opacity: 1;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -45,17 +54,16 @@ nav {
 .nav-progress-rect {
     fill: none;
     stroke: var(--stone);
-    stroke-width: 1.5px;
+    stroke-width: 1px;
     stroke-linecap: round;
     stroke-linejoin: round;
-    /* filter: drop-shadow(0 0 6px rgba(43, 255, 136, 0.6)); */
     transition: stroke-dashoffset 0.08s linear;
 }
 
 /* Trigger nav drop down animation when loader hides */
 #loader.hide ~ nav,
 nav.loaded {
-    animation: navDropDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+    animation: navDropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 @keyframes navDropDown {
@@ -70,11 +78,11 @@ nav.loaded {
 }
 
 .nav-mark {
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 600;
-    font-size: 14px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
     color: var(--off-white);
-    letter-spacing: 0.04em;
+    letter-spacing: -0.02em;
     white-space: nowrap;
 }
 
@@ -100,7 +108,6 @@ nav.loaded {
     background: transparent;
     border: none;
     color: var(--off-white);
-    cursor: pointer;
     padding: 4px;
     align-items: center;
     justify-content: center;
@@ -113,61 +120,75 @@ nav.loaded {
 
 .mobile-menu {
     display: none;
-    position: fixed;
-    top: 90px;
-    left: 50%;
-    z-index: 99;
-    border-radius: 10px;
-    padding: 24px 32px;
-    flex-direction: column;
-    gap: 24px;
-    min-width: 220px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(22px) saturate(200%);
-    -webkit-backdrop-filter: blur(22px) saturate(200%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 12px rgba(43, 255, 136, 0.05),
-        0 12px 40px rgba(0, 0, 0, 0.55);
-}
-
-.mobile-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.mobile-menu a {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13.5px;
-    color: var(--stone);
-    transition: color 0.3s;
-}
-
-.mobile-menu a:hover {
-    color: var(--accent);
 }
 
 @media (max-width: 700px) {
     nav {
-        gap: 0;
-        justify-content: space-between;
-        width: 92vw;
+        width: 90vw;
         padding: 12px 24px;
+        border-radius: 32px;
+        transition: border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    nav.menu-open {
+        border-radius: 32px;
+        padding: 14px 24px 20px 24px;
+    }
+
+    .nav-top-row {
+        justify-content: space-between;
+        gap: 0;
     }
 
     .nav-links {
         display: none;
     }
 
-    .hamburger,
+    .hamburger {
+        display: flex;
+    }
+
     .mobile-menu {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        margin-top: 0;
+        padding-top: 0;
+        padding-left: 4px;
+        border-top: 1px solid transparent;
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.3s ease,
+                    margin-top 0.4s ease,
+                    padding-top 0.4s ease,
+                    border-color 0.4s ease;
+        text-align: left;
+    }
+
+    nav.menu-open .mobile-menu,
+    .mobile-menu.active {
+        max-height: 260px;
+        opacity: 1;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .mobile-menu a {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13.5px;
+        color: var(--stone);
+        transition: color 0.3s, transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .mobile-menu a:hover {
+        color: var(--accent);
+        transform: translateX(4px);
     }
 }

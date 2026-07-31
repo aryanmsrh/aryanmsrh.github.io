@@ -3,7 +3,7 @@
    ========================================= */
 
 @media (pointer: fine) {
-    html, body, a, button, input, select, textarea, [role="button"], .think-header, .think-link, .proj-card {
+    html, body, html *, body * {
         cursor: none !important;
     }
 

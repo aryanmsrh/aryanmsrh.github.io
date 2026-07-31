@@ -68,27 +68,35 @@ export function initLoader() {
 
 export function initMobileMenu() {
   const hamburgerBtn = document.getElementById("hamburger-btn");
+  const nav = document.querySelector("nav");
   const mobileMenu = document.getElementById("mobile-menu");
 
-  if (!hamburgerBtn || !mobileMenu) return;
+  if (!hamburgerBtn || !nav || !mobileMenu) return;
+
+  const closeMenu = () => {
+    nav.classList.remove("menu-open");
+    mobileMenu.classList.remove("active");
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 100);
+  };
 
   hamburgerBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+    nav.classList.toggle("menu-open");
     mobileMenu.classList.toggle("active");
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 100);
   });
 
   mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () =>
-      mobileMenu.classList.remove("active")
-    );
+    link.addEventListener("click", closeMenu);
   });
 
   document.addEventListener("click", (e) => {
-    if (
-      !mobileMenu.contains(e.target) &&
-      !hamburgerBtn.contains(e.target)
-    ) {
-      mobileMenu.classList.remove("active");
+    if (!nav.contains(e.target)) {
+      closeMenu();
     }
   });
 }
@@ -168,7 +176,7 @@ export function initCustomCursor() {
   let ringY = -100;
   let isVisible = false;
 
-  const interactiveSelector = "a, button, input, select, textarea, [role='button'], .think-header, .think-link, .proj-card, .modal-close-btn, .btn";
+  const interactiveSelector = "a, button, input, select, textarea, [role='button'], .think-header, .think-link, .proj-card, .credential-card, .journal-card, .skill-pill, .timeline-card, .modal-close-btn, .btn";
 
   window.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
@@ -284,4 +292,32 @@ export function initNavProgress() {
     updateProgress();
     resetHideTimer();
   }, 400);
+}
+
+export function initFooterClock() {
+  const clockEl = document.getElementById("footer-local-time");
+  if (!clockEl) return;
+
+  function updateClock() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    });
+    clockEl.textContent = `${timeStr} IST`;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+export function initBackToTop() {
+  const btn = document.getElementById("back-to-top");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }

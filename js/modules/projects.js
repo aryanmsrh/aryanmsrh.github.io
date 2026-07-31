@@ -58,7 +58,9 @@ function createProjectCard(p) {
 
   if (p.id) {
     card.dataset.id = p.id;
-    card.classList.add(`proj-card-${p.id}`);
+    if (p.id === "early-projects") {
+      card.classList.add("proj-card-early-projects");
+    }
   }
 
   if (p.id && (p.question || p.journey)) {

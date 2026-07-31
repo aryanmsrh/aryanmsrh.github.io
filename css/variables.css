@@ -34,5 +34,11 @@
     --stone: rgba(255, 255, 255, 0.52);
     --off-white: #ffffff;
     --accent: #2bff88;
-    --accent-dim: #17b85e;
+    --accent-dim: #1a9951;
+
+    /* Skill Tag Level Colors */
+    --tag-expert: #ff4d4d;
+    --tag-proficient: #ff9e3b;
+    --tag-comfortable: #ffd000;
+    --tag-learning: #38bdf8;
 }

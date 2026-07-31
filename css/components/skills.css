@@ -5,8 +5,9 @@
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 12px;
     width: 100%;
+    margin-top: 20px;
 }
 
 .skills-card {
@@ -23,7 +24,7 @@
 
 .skills-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(43, 255, 136, 0.2);
+    border-color: rgba(43, 255, 136, 0.3);
 }
 
 .skills-header {
@@ -32,7 +33,7 @@
 
 .skills-category {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--off-white);
     margin-bottom: 4px;
@@ -48,13 +49,12 @@
 .skills-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
+    gap: 4px;
 }
 
 .skill-pill {
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.82rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     padding: 6px 14px;
     border-radius: 0px;
     background: rgba(20, 20, 20, 1.0);
@@ -66,39 +66,66 @@
     transition: all 0.2s ease;
 }
 
-.skill-pill.highlight {
-    border-color: rgba(43, 255, 136, 0.2);
-    background: rgba(20, 20, 20, 1.0);
-    color: var(--accent);
+.skill-pill.tag-expert:hover {
+    border-color: var(--tag-expert);
 }
 
-.skill-pill:hover {
-    border-color: var(--accent);
-    transform: scale(1.05);
+.skill-pill.tag-proficient:hover {
+    border-color: var(--tag-proficient);
+}
+
+.skill-pill.tag-comfortable:hover {
+    border-color: var(--tag-comfortable);
+}
+
+.skill-pill.tag-learning:hover {
+    border-color: var(--tag-learning);
 }
 
 .skill-level {
-    font-size: 0.72rem;
-    opacity: 0.65;
-    font-weight: 400;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.skill-level.tag-expert {
+    color: var(--tag-expert);
+}
+
+.skill-level.tag-proficient {
+    color: var(--tag-proficient);
+}
+
+.skill-level.tag-comfortable {
+    color: var(--tag-comfortable);
+}
+
+.skill-level.tag-learning {
+    color: var(--tag-learning);
 }
 
 .section-tagline {
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.92rem;
+    font-size: 1rem;
     color: var(--stone);
-    margin-top: -16px;
-    margin-bottom: 24px;
-    letter-spacing: 0.02em;
 }
 
 @media (max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 12px;
     }
     
     .skills-card {
         padding: 18px;
+    }
+
+    .skills-pills {
+        gap: 4px;
+    }
+
+    .skill-pill {
+        padding: 5px 10px;
+        gap: 6px;
     }
 }
