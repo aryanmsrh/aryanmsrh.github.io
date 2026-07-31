@@ -20,15 +20,48 @@ export async function initSvgElements() {
 }
 
 export function initLoader() {
+  const loaderEl = document.getElementById("loader");
+  const textEl = document.getElementById("loader-text");
+  if (!loaderEl) return;
+
+  const phrases = [
+    "> COMPILING FROM SCRATCH",
+    "> OPTIMIZING RUNTIME",
+    "> LOADING MODULES",
+    "> ELIMINATING NASAL DEMONS",
+    "> DONE"
+  ];
+
+  let phraseIndex = 0;
+  let intervalId = null;
+
+  if (textEl) {
+    intervalId = setInterval(() => {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      textEl.classList.add("flip-out");
+
+      setTimeout(() => {
+        textEl.innerHTML = `${phrases[phraseIndex]}<span class="cursor"></span>`;
+        textEl.classList.remove("flip-out");
+        textEl.classList.add("flip-in");
+
+        setTimeout(() => {
+          textEl.classList.remove("flip-in");
+        }, 260);
+      }, 220);
+    }, 300);
+  }
+
   const hideLoader = () => {
-    document.getElementById("loader")?.classList.add("hide");
+    if (intervalId) clearInterval(intervalId);
+    loaderEl.classList.add("hide");
   };
 
   if (document.readyState === "complete") {
-    setTimeout(hideLoader, 1400);
+    setTimeout(hideLoader, 1500);
   } else {
     window.addEventListener("load", () => {
-      setTimeout(hideLoader, 1400);
+      setTimeout(hideLoader, 1500);
     });
   }
 }

@@ -33,12 +33,45 @@
     display: block;
 }
 
-#loader span {
+.loader-roller-container {
+    perspective: 400px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#loader span.loader-text-roller {
+    display: inline-block;
     font-family: "JetBrains Mono", monospace;
     font-size: clamp(12px, 2.5vw, 15px);
     letter-spacing: 0.2em;
     color: var(--stone);
     text-transform: uppercase;
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+#loader span.loader-text-roller.flip-out {
+    transform: rotateX(90deg) translateY(-8px);
+    opacity: 0;
+}
+
+#loader span.loader-text-roller.flip-in {
+    animation: textFlipIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes textFlipIn {
+    0% {
+        transform: rotateX(-90deg) translateY(8px);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg) translateY(0px);
+        opacity: 1;
+    }
 }
 
 #loader .cursor {

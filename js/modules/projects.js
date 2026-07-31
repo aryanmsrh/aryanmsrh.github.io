@@ -161,6 +161,7 @@ export function openModal(id) {
   const backdrop = document.getElementById("modal-backdrop");
 
   if (content && backdrop) {
+    content.className = "modal";
     const journeyHTML = Array.isArray(p.journey)
       ? p.journey.map((t) => `<p>${t}</p>`).join("")
       : "";

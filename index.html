@@ -25,7 +25,10 @@
       crossorigin
     />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <title>Aryan Mishra</title>
   </head>
 
@@ -49,9 +52,11 @@
             <line x1="30" y1="35" x2="42" y2="48" />
           </g>
         </svg>
-        <span id="loader-text">
-          COMPILING FROM SCRATCH<span class="cursor"></span>
-        </span>
+        <div class="loader-roller-container">
+          <span id="loader-text" class="loader-text-roller">
+            > COMPILING FROM SCRATCH<span class="cursor"></span>
+          </span>
+        </div>
       </div>
     </div>
 
