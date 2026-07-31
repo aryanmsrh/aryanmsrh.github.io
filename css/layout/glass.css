@@ -42,10 +42,10 @@ section .about-text {
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     background: radial-gradient(1000px circle at var(--mouse-x) var(--mouse-y),
-                rgba(43, 255, 136, 0.0500) 0%,
-                rgba(43, 255, 136, 0.0125) 25%,
-                rgba(43, 255, 136, 0.0062) 50%,
-                rgba(43, 255, 136, 0.0031) 75%,
+                rgba(1, 133, 53, 0.1000) 0%,
+                rgba(1, 133, 53, 0.0500) 25%,
+                rgba(1, 133, 53, 0.0250) 50%,
+                rgba(1, 133, 53, 0.0125) 75%,
                 transparent 100%);
     will-change: background;
 }

@@ -245,7 +245,8 @@ function renderMobileWave(state, heroAlpha) {
  * Hero visual delegate determining responsive layout orientation (mobile vs desktop).
  */
 function renderHeroVisual(state) {
-  const heroAlpha = 1 - smoothstep(0.15, 0.25, state.scrollProgress);
+  // Wave fade-out: widened scroll range from (0.15 - 0.25) to (0.02 - 0.38) for a slower, smoother transition
+  const heroAlpha = 1 - smoothstep(0.02, 0.38, state.scrollProgress);
 
   if (heroAlpha <= 0.01) return;
 
@@ -274,6 +275,7 @@ export function initCanvas() {
     cx: 0,
     cy: 0,
     scrollProgress: 0,
+    smoothCollapse: 0,
     time: 0,
     globalScale: 1,
     globalAlpha: 1,
@@ -306,7 +308,13 @@ export function initCanvas() {
     ctx.clearRect(0, 0, state.width, state.height);
     state.time += 0.005;
 
-    const collapseFactor = smoothstep(0.85, 1.0, state.scrollProgress);
+    // Target collapse activates near the footer (0.88 - 1.0)
+    const targetCollapse = smoothstep(0.88, 1.0, state.scrollProgress);
+
+    // Frame-rate based LERP easing (0.04 factor) so rapid scrolling animates smoothly over ~500ms
+    state.smoothCollapse += (targetCollapse - state.smoothCollapse) * 0.04;
+
+    const collapseFactor = state.smoothCollapse;
     state.globalScale = Math.max(0.001, 1 - collapseFactor);
     state.globalAlpha = 1 - collapseFactor;
 

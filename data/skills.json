@@ -1,0 +1,45 @@
+[
+  {
+    "category": "Languages",
+    "description": "Primary languages for systems engineering, matrix math, and modular web interfaces.",
+    "skills": [
+      { "name": "C++", "level": "Advanced", "highlight": true },
+      { "name": "Python", "level": "Advanced", "highlight": true },
+      { "name": "JavaScript (ES6+)", "level": "Advanced", "highlight": true },
+      { "name": "HTML5 / Vanilla CSS", "level": "Advanced", "highlight": false },
+      { "name": "Rust", "level": "Learning", "highlight": false }
+    ]
+  },
+  {
+    "category": "Mathematics & Theory",
+    "description": "Theoretical foundation for algorithmic optimization and model derivation.",
+    "skills": [
+      { "name": "Linear Algebra", "level": "Core Focus", "highlight": true },
+      { "name": "Backpropagation & Autodiff", "level": "Built from Scratch", "highlight": true },
+      { "name": "Multivariable Calculus", "level": "Core Focus", "highlight": false },
+      { "name": "Graph Theory & Combinatorics", "level": "CP Rank 2145", "highlight": true },
+      { "name": "Algorithmic Complexity", "level": "Mastered", "highlight": false }
+    ]
+  },
+  {
+    "category": "Systems & Engineering",
+    "description": "Low-level computing abstractions, matrix operations, and modular software.",
+    "skills": [
+      { "name": "NumPy Engine", "level": "Advanced", "highlight": true },
+      { "name": "Data Structures & Algorithms", "level": "GM Rank", "highlight": true },
+      { "name": "Linux / WSL2", "level": "Daily Driver", "highlight": false },
+      { "name": "Git & Open Source", "level": "Active", "highlight": false },
+      { "name": "Modular ES Modules", "level": "Advanced", "highlight": true }
+    ]
+  },
+  {
+    "category": "Embedded & Hardware",
+    "description": "Real-time microcontrollers, sensor telemetry, and hardware integration.",
+    "skills": [
+      { "name": "Arduino & Embedded C", "level": "Practiced", "highlight": false },
+      { "name": "IMU Telemetry & Sensor Fusion", "level": "Built", "highlight": true },
+      { "name": "RF Wireless Controls", "level": "Practiced", "highlight": false },
+      { "name": "Microcontroller Interfacing", "level": "Explored", "highlight": false }
+    ]
+  }
+]

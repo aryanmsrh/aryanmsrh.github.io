@@ -1,0 +1,60 @@
+[
+  {
+    "id": "nn-from-scratch",
+    "type": "Deep Dive",
+    "title": "Building a Neural Network Engine from First Principles in NumPy",
+    "subtitle": "How to compute every gradient by hand, understand backpropagation, and achieve 97% accuracy on MNIST without PyTorch.",
+    "date": "July 2025",
+    "readTime": "6 min read",
+    "badge": "Machine Learning",
+    "image": "assets/imgs/project-nn.png",
+    "youtubeId": "WFLVy8av3O0",
+    "excerpt": "The rule was simple: no autograd, no PyTorch — write matrix backprop from mathematical definitions upward.",
+    "content": [
+      "When learning deep learning, it is easy to rely on frameworks like PyTorch or TensorFlow where calling `loss.backward()` hides the actual matrix calculus taking place. I wanted to understand every single line of matrix multiplication and partial derivative.",
+      "### Deriving the Gradients",
+      "For a dense layer computing Z = W · X + b, followed by an activation A = sigmoid(Z), we use the chain rule to derive the gradient of the loss L with respect to weights W.",
+      "Implementing this in NumPy required tracking matrix shapes carefully. Batch processing with matrix products accelerated training while keeping memory footprint minimal.",
+      "### Key Takeaways & Lessons",
+      "1. Weight Initialization Matters: He initialization prevents vanishing gradients in deep layers.\n2. Numerical Stability: Computing softmax cross-entropy loss requires subtracting max logits to avoid overflow.\n3. Accuracy: Reached 97.2% on MNIST test set after 15 epochs."
+    ]
+  },
+  {
+    "id": "zero-dep-portfolio",
+    "type": "Architecture",
+    "title": "Why I Rebuilt My Portfolio with Zero Dependencies and Pure ES Modules",
+    "subtitle": "Eliminating build steps, npm bloat, and bundler overhead in favor of pure HTML5, Vanilla CSS, and native ES6 modules.",
+    "date": "Jan 2026",
+    "readTime": "4 min read",
+    "badge": "Web Architecture",
+    "image": "assets/imgs/archived.png",
+    "youtubeId": null,
+    "excerpt": "Modern web development is bloated with build tools. Here is why building with native ES modules and zero npm packages yields superior speed and clarity.",
+    "content": [
+      "Modern web development often defaults to heavy bundlers, Webpack configs, and thousands of node_modules packages. For a personal portfolio, this adds unnecessary complexity and friction.",
+      "### The Architecture",
+      "By leveraging native browser ES modules (type='module'), each component is decoupled into clean JS modules. CSS is structured modularly with CSS Variables and backdrop-filter blur for liquid glass effects.",
+      "### Results",
+      "• Zero Build Time: Instantly loads without a compile step.\n• Maximum Performance: Fast load times with zero framework overhead.\n• Full Maintenance Control: Every animation and element is written from scratch."
+    ]
+  },
+  {
+    "id": "handmobile-robotics",
+    "type": "Project Log",
+    "title": "HandMobile: Real-Time IMU Telemetry & Gesture Controlled Robotics",
+    "subtitle": "Designing a micro-controller vehicle controlled via IMU wireless telemetry at age 14.",
+    "date": "June 2022",
+    "readTime": "5 min read",
+    "badge": "Hardware",
+    "image": "assets/imgs/project-nn.png",
+    "youtubeId": null,
+    "excerpt": "Integrating hardware sensors with wireless microcontrollers to map hand gestures directly to motor PWM output in real time.",
+    "content": [
+      "In 2022, I wanted to bridge hardware sensors with real-time software control. I built HandMobile — a gesture-controlled vehicle using IMU accelerometers and RF wireless modules.",
+      "### Hardware & Sensor Fusion",
+      "The system uses an MPU-6050 6-axis gyroscope/accelerometer attached to a glove. Roll and pitch angles were processed on an Arduino and transmitted via NRF24L01 RF modules to the receiver on the vehicle.",
+      "### Lessons Learned",
+      "• Sensor Filtering: Complementary filters were needed to reduce accelerometer noise.\n• Latency: Low-latency serial protocols are essential for smooth real-time control."
+    ]
+  }
+]

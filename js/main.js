@@ -4,9 +4,10 @@ import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
 import { renderAbout } from "./modules/about.js";
 import { renderCredentials } from "./modules/credentials.js";
-import { renderInterests } from "./modules/interests.js";
+import { renderSkills } from "./modules/skills.js";
 import { renderTimeline } from "./modules/timeline.js";
-import { renderVideos } from "./modules/videos.js";
+import { renderInterests } from "./modules/interests.js";
+import { renderJournal } from "./modules/journal.js";
 import { renderContact } from "./modules/contact.js";
 import { initTypewriter, renderHeroStats } from "./modules/hero.js";
 
@@ -25,8 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHeroStats();
   renderAbout();
   renderCredentials();
-  renderInterests();
+  renderSkills();
   renderTimeline();
-  renderVideos();
+  renderInterests();
+  renderJournal();
   renderContact();
 });
