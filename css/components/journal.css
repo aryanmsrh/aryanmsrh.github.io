@@ -11,12 +11,10 @@
 }
 
 .journal-card {
-    background: var(--panel);
+    background: transparent;
     border: 1px solid var(--line);
     border-radius: 0px;
     overflow: hidden;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     transition: border-color 0.35s ease,
                 box-shadow 0.35s ease,
                 background 0.35s ease;

@@ -7,14 +7,16 @@ section {
     padding: 60px 48px;
     max-width: 1080px;
     margin: 40px auto;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
 
     background: rgba(10, 10, 10, 0.65);
-    border: 1px solid rgba(150, 150, 150, 0.15);
-    backdrop-filter: blur(16px) saturate(140%);
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: none;
+    border-top: 1px solid var(--accent-dim);
+    border-bottom: 0.5px solid var(--line);
+    backdrop-filter: blur(2px) saturate(10%);
+    -webkit-backdrop-filter: blur(2px) saturate(10%);
 
     will-change: transform, opacity;
 }
@@ -31,6 +33,10 @@ section .about-text {
     text-align: left;
 }
 
+section:not(#hero) {
+    margin-top: 120px;
+}
+
 /* =========================================
    PAGE-WIDE SUBTLE MOUSE RADIAL SHADOW OVERLAY
    ========================================= */
@@ -44,10 +50,10 @@ section .about-text {
     z-index: 1;
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y),
-                rgba(0, 0, 0, 0.25) 0%,
-                rgba(0, 0, 0, 0.15) 40%,
-                rgba(0, 0, 0, 0.10) 70%,
+    background: radial-gradient(550px circle at var(--mouse-x) var(--mouse-y),
+                rgba(71, 85, 105, 0.18) 0%,
+                rgba(51, 65, 85, 0.10) 40%,
+                rgba(30, 41, 59, 0.04) 70%,
                 transparent 100%);
     will-change: background;
 }

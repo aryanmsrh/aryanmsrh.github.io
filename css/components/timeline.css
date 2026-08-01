@@ -18,6 +18,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    background: transparent;
 }
 
 .think-item:hover,
@@ -79,7 +80,7 @@
 }
 
 .think-item.open .think-toggle-badge {
-    background: rgba(0, 150, 0, 1.0);
+    background: var(--accent-dim);
     color: #000;
     /* border-color: var(--accent); */
     font-weight: 600;

@@ -8,31 +8,46 @@ export function initTypewriter() {
   const textEl = document.getElementById("hero-name-text");
   if (!textEl) return;
 
-  const fullText = "ARYAN MISHRA";
-  textEl.textContent = "";
-  let index = 0;
+  const phrases = ["Aryan Mishra", "> aryanmsrh"];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-  const startTyping = () => {
-    textEl.textContent = "";
-    index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        textEl.textContent += fullText.charAt(index);
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 120);
+  textEl.textContent = "";
+
+  const type = () => {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      textEl.textContent = currentPhrase.substring(0, charIndex);
+    } else {
+      charIndex++;
+      textEl.textContent = currentPhrase.substring(0, charIndex);
+    }
+
+    let speed = isDeleting ? 100 : 120;
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      speed = 5000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      speed = 200;
+    }
+
+    setTimeout(type, speed);
   };
 
   const loader = document.getElementById("loader");
   if (!loader || loader.classList.contains("hide")) {
-    setTimeout(startTyping, 300);
+    setTimeout(type, 300);
   } else {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === "class" && loader.classList.contains("hide")) {
-          setTimeout(startTyping, 300);
+          setTimeout(type, 300);
           observer.disconnect();
         }
       });

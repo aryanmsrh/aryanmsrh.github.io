@@ -80,7 +80,6 @@
 .btn:hover {
     border-color: var(--accent);
     background: rgba(43, 255, 136, 0.08);
-    transform: translateY(-2px);
 }
 
 .btn.primary {
