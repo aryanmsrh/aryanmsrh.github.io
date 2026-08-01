@@ -58,6 +58,29 @@ function drawArrow(ctx, fromX, fromY, toX, toY, color) {
   ctx.stroke();
 }
 
+/**
+ * Shared grid-aligned distance function & point displacement helper.
+ */
+function getGridDist(dx, dy) {
+  return 0.5 * Math.hypot(dx * 0.75, dy * 1.15) + 0.5 * (Math.abs(dx) + Math.abs(dy));
+}
+
+function getDisplacedPoint(px, py, mouseX, mouseY, influenceRadius = 280) {
+  if (mouseX <= -900 || mouseY <= -900) return { x: px, y: py };
+  const dx = px - mouseX;
+  const dy = py - mouseY;
+  const dist = getGridDist(dx, dy);
+
+  if (dist < influenceRadius) {
+    const factor = Math.pow(1 - dist / influenceRadius, 2);
+    return {
+      x: px + dx * factor * 0.22,
+      y: py + dy * factor * 0.22
+    };
+  }
+  return { x: px, y: py };
+}
+
 // =========================================
 // MODULAR SCENE RENDERERS
 // =========================================
@@ -66,37 +89,163 @@ function drawArrow(ctx, fromX, fromY, toX, toY, color) {
  * Renders the background coordinate grid, matrix transforms, and axis arrows.
  */
 function renderGridAndVectors(state) {
-  const { ctx, width, height, time, scrollProgress, globalAlpha, baseAccent } = state;
+  const { ctx, width, height, time, scrollProgress, globalAlpha, baseAccent, mouseX, mouseY } = state;
   const gridSize = 60;
   const mlDistortion = peak(0.2, 0.88, scrollProgress);
 
   ctx.save();
   if (mlDistortion > 0) {
-    const shearY = Math.sin(time * 0.8) * 0.5 * mlDistortion;
-    const scaleX = 1 + Math.cos(time * 0.5) * 0.3 * mlDistortion;
-    const rotation = Math.sin(time * 0.3) * 0.2 * mlDistortion;
+    const shearY = Math.sin(time * 2.2) * 0.55 * mlDistortion;
+    const scaleX = 1 + Math.cos(time * 1.8) * 0.35 * mlDistortion;
+    const rotation = Math.sin(time * 1.2) * 0.25 * mlDistortion;
     ctx.transform(scaleX, shearY, 0, 1, 0, 0);
     ctx.rotate(rotation);
   }
 
-  const numLines = Math.ceil(Math.max(width, height) / gridSize) + 2;
-  ctx.beginPath();
-  for (let i = -numLines; i <= numLines; i++) {
-    const offset = i * gridSize;
-    ctx.moveTo(offset, -numLines * gridSize);
-    ctx.lineTo(offset, numLines * gridSize);
-    ctx.moveTo(-numLines * gridSize, offset);
-    ctx.lineTo(numLines * gridSize, offset);
+  const numX = Math.ceil(width / gridSize) + 2;
+  const numY = Math.ceil(height / gridSize) + 2;
+  const influenceRadius = 280;
+
+  // Helper distance function: grid-aligned Manhattan & anisotropic blend (eliminates circular spotlight look)
+  const getGridDist = (dx, dy) => 0.5 * Math.hypot(dx * 0.75, dy * 1.15) + 0.5 * (Math.abs(dx) + Math.abs(dy));
+
+  // 1. Draw Vertical lines with grid-aligned displacement
+  for (let i = -numX; i <= numX; i++) {
+    const baseX = i * gridSize;
+    ctx.beginPath();
+    for (let j = -numY; j <= numY; j += 0.5) {
+      const baseY = j * gridSize;
+      const dx = baseX - mouseX;
+      const dy = baseY - mouseY;
+      const dist = getGridDist(dx, dy);
+
+      let x = baseX;
+      let y = baseY;
+
+      if (dist < influenceRadius) {
+        const factor = Math.pow(1 - dist / influenceRadius, 2);
+        x += dx * factor * 0.22;
+        y += dy * factor * 0.22;
+      }
+
+      if (j === -numY) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(${baseAccent}, ${0.12 * globalAlpha})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
   }
-  ctx.strokeStyle = `rgba(${baseAccent}, ${0.15 * globalAlpha})`;
-  ctx.lineWidth = 1;
-  ctx.stroke();
+
+  // 2. Draw Horizontal lines with grid-aligned displacement
+  for (let j = -numY; j <= numY; j++) {
+    const baseY = j * gridSize;
+    ctx.beginPath();
+    for (let i = -numX; i <= numX; i += 0.5) {
+      const baseX = i * gridSize;
+      const dx = baseX - mouseX;
+      const dy = baseY - mouseY;
+      const dist = getGridDist(dx, dy);
+
+      let x = baseX;
+      let y = baseY;
+
+      if (dist < influenceRadius) {
+        const factor = Math.pow(1 - dist / influenceRadius, 2);
+        x += dx * factor * 0.22;
+        y += dy * factor * 0.22;
+      }
+
+      if (i === -numX) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(${baseAccent}, ${0.12 * globalAlpha})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // 3. Grid-aligned highlight pass (NO circular spotlight, ultra-faint glow)
+  if (mouseX > -900 && mouseY > -900) {
+    // Vertical line highlight segments
+    for (let i = -numX; i <= numX; i++) {
+      const baseX = i * gridSize;
+      const dx = baseX - mouseX;
+      if (Math.abs(dx) > influenceRadius) continue;
+
+      for (let j = -numY; j < numY; j += 0.5) {
+        const y1 = j * gridSize;
+        const y2 = (j + 0.5) * gridSize;
+        const d1 = getGridDist(baseX - mouseX, y1 - mouseY);
+        const d2 = getGridDist(baseX - mouseX, y2 - mouseY);
+
+        if (d1 < influenceRadius || d2 < influenceRadius) {
+          const avgDist = (d1 + d2) / 2;
+          if (avgDist < influenceRadius) {
+            const factor = Math.pow(1 - avgDist / influenceRadius, 1.8);
+            const f1 = Math.pow(1 - Math.min(influenceRadius, d1) / influenceRadius, 2);
+            const f2 = Math.pow(1 - Math.min(influenceRadius, d2) / influenceRadius, 2);
+
+            const x1 = baseX + (baseX - mouseX) * f1 * 0.22;
+            const ny1 = y1 + (y1 - mouseY) * f1 * 0.22;
+            const x2 = baseX + (baseX - mouseX) * f2 * 0.22;
+            const ny2 = y2 + (y2 - mouseY) * f2 * 0.22;
+
+            ctx.beginPath();
+            ctx.moveTo(x1, ny1);
+            ctx.lineTo(x2, ny2);
+            ctx.strokeStyle = `rgba(${baseAccent}, ${(0.06 + 0.07 * factor) * globalAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Horizontal line highlight segments
+    for (let j = -numY; j <= numY; j++) {
+      const baseY = j * gridSize;
+      const dy = baseY - mouseY;
+      if (Math.abs(dy) > influenceRadius) continue;
+
+      for (let i = -numX; i < numX; i += 0.5) {
+        const x1 = i * gridSize;
+        const x2 = (i + 0.5) * gridSize;
+        const d1 = getGridDist(x1 - mouseX, baseY - mouseY);
+        const d2 = getGridDist(x2 - mouseX, baseY - mouseY);
+
+        if (d1 < influenceRadius || d2 < influenceRadius) {
+          const avgDist = (d1 + d2) / 2;
+          if (avgDist < influenceRadius) {
+            const factor = Math.pow(1 - avgDist / influenceRadius, 1.8);
+            const f1 = Math.pow(1 - Math.min(influenceRadius, d1) / influenceRadius, 2);
+            const f2 = Math.pow(1 - Math.min(influenceRadius, d2) / influenceRadius, 2);
+
+            const nx1 = x1 + (x1 - mouseX) * f1 * 0.22;
+            const y1 = baseY + (baseY - mouseY) * f1 * 0.22;
+            const nx2 = x2 + (x2 - mouseX) * f2 * 0.22;
+            const y2 = baseY + (baseY - mouseY) * f2 * 0.22;
+
+            ctx.beginPath();
+            ctx.moveTo(nx1, y1);
+            ctx.lineTo(nx2, y2);
+            ctx.strokeStyle = `rgba(${baseAccent}, ${(0.06 + 0.07 * factor) * globalAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+  }
 
   if (mlDistortion > 0.01) {
     const vLen = gridSize * 2.5;
     const arrowColor = `rgba(${baseAccent}, ${0.5 * mlDistortion * globalAlpha})`;
-    drawArrow(ctx, 0, 0, vLen, 0, arrowColor);
-    drawArrow(ctx, 0, 0, 0, -vLen, arrowColor);
+
+    const pOrigin = getDisplacedPoint(0, 0, mouseX, mouseY);
+    const pX = getDisplacedPoint(vLen, 0, mouseX, mouseY);
+    const pY = getDisplacedPoint(0, -vLen, mouseX, mouseY);
+
+    drawArrow(ctx, pOrigin.x, pOrigin.y, pX.x, pX.y, arrowColor);
+    drawArrow(ctx, pOrigin.x, pOrigin.y, pY.x, pY.y, arrowColor);
   }
   ctx.restore();
 }
@@ -105,7 +254,7 @@ function renderGridAndVectors(state) {
  * Renders desktop horizontal wave propagation with spatial decay e^{-gamma * x}.
  */
 function renderDesktopWave(state, heroAlpha) {
-  const { ctx, width, height, cx, time, globalAlpha, baseAccent } = state;
+  const { ctx, width, height, cx, time, globalAlpha, baseAccent, mouseX, mouseY } = state;
   const angle = time * 1.5;
 
   const r = height * 0.5;
@@ -117,34 +266,46 @@ function renderDesktopWave(state, heroAlpha) {
   const px = circleCX + Math.cos(angle) * r;
   const py = -Math.sin(angle) * r;
 
-  // Circle Arc
+  // Circle Arc (warped by mouse proximity)
   ctx.save();
   ctx.shadowBlur = 20;
   ctx.shadowColor = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
   ctx.strokeStyle = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.arc(circleCX, circleCY, r, 0, Math.PI * 2);
+  const circleSteps = 64;
+  for (let s = 0; s <= circleSteps; s++) {
+    const a = (s / circleSteps) * Math.PI * 2;
+    const rawX = circleCX + Math.cos(a) * r;
+    const rawY = circleCY + Math.sin(a) * r;
+    const pt = getDisplacedPoint(rawX, rawY, mouseX, mouseY);
+    if (s === 0) ctx.moveTo(pt.x, pt.y);
+    else ctx.lineTo(pt.x, pt.y);
+  }
   ctx.stroke();
   ctx.restore();
+
+  const pCircleCenter = getDisplacedPoint(circleCX, circleCY, mouseX, mouseY);
+  const pP = getDisplacedPoint(px, py, mouseX, mouseY);
+  const pWaveStart = getDisplacedPoint(waveStartX, py, mouseX, mouseY);
 
   // Radial Vector
   ctx.strokeStyle = `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.moveTo(circleCX, circleCY);
-  ctx.lineTo(px, py);
+  ctx.moveTo(pCircleCenter.x, pCircleCenter.y);
+  ctx.lineTo(pP.x, pP.y);
   ctx.stroke();
 
   // Projection Line (dashed)
   ctx.setLineDash([4, 4]);
   ctx.beginPath();
-  ctx.moveTo(px, py);
-  ctx.lineTo(waveStartX, py);
+  ctx.moveTo(pP.x, pP.y);
+  ctx.lineTo(pWaveStart.x, pWaveStart.y);
   ctx.stroke();
   ctx.setLineDash([]);
 
-  // Damped Wave
+  // Damped Sine Wave (warped by mouse proximity)
   const waveGrad = ctx.createLinearGradient(waveStartX, 0, cx, 0);
   waveGrad.addColorStop(
     0,
@@ -163,10 +324,12 @@ function renderDesktopWave(state, heroAlpha) {
     const d = x - waveStartX;
     const damping = Math.exp(-gamma * d);
     const wavePhase = angle - d * waveLengthFactor;
-    const wy = -r * damping * Math.sin(wavePhase);
+    const rawY = -r * damping * Math.sin(wavePhase);
 
-    if (x === waveStartX) ctx.moveTo(x, wy);
-    else ctx.lineTo(x, wy);
+    const pt = getDisplacedPoint(x, rawY, mouseX, mouseY);
+
+    if (x === waveStartX) ctx.moveTo(pt.x, pt.y);
+    else ctx.lineTo(pt.x, pt.y);
   }
   ctx.stroke();
 }
@@ -175,7 +338,7 @@ function renderDesktopWave(state, heroAlpha) {
  * Renders mobile vertical wave propagation with spatial decay e^{-gamma * y}.
  */
 function renderMobileWave(state, heroAlpha) {
-  const { ctx, width, height, cy, time, globalAlpha, baseAccent } = state;
+  const { ctx, width, height, cy, time, globalAlpha, baseAccent, mouseX, mouseY } = state;
   const angle = time * 1.5;
 
   const r = width * 0.5;
@@ -187,34 +350,46 @@ function renderMobileWave(state, heroAlpha) {
   const px = circleCX + Math.cos(angle) * r;
   const py = circleCY + Math.sin(angle) * r;
 
-  // Circle Arc
+  // Circle Arc (warped by mouse proximity)
   ctx.save();
   ctx.shadowBlur = 20;
   ctx.shadowColor = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
   ctx.strokeStyle = `rgba(${baseAccent}, ${0.4 * heroAlpha * globalAlpha})`;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.arc(circleCX, circleCY, r, 0, Math.PI * 2);
+  const circleSteps = 64;
+  for (let s = 0; s <= circleSteps; s++) {
+    const a = (s / circleSteps) * Math.PI * 2;
+    const rawX = circleCX + Math.cos(a) * r;
+    const rawY = circleCY + Math.sin(a) * r;
+    const pt = getDisplacedPoint(rawX, rawY, mouseX, mouseY);
+    if (s === 0) ctx.moveTo(pt.x, pt.y);
+    else ctx.lineTo(pt.x, pt.y);
+  }
   ctx.stroke();
   ctx.restore();
+
+  const pCircleCenter = getDisplacedPoint(circleCX, circleCY, mouseX, mouseY);
+  const pP = getDisplacedPoint(px, py, mouseX, mouseY);
+  const pWaveStart = getDisplacedPoint(px, waveStartY, mouseX, mouseY);
 
   // Radial Vector
   ctx.strokeStyle = `rgba(${baseAccent}, ${0.5 * heroAlpha * globalAlpha})`;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.moveTo(circleCX, circleCY);
-  ctx.lineTo(px, py);
+  ctx.moveTo(pCircleCenter.x, pCircleCenter.y);
+  ctx.lineTo(pP.x, pP.y);
   ctx.stroke();
 
   // Projection Line (dashed)
   ctx.setLineDash([4, 4]);
   ctx.beginPath();
-  ctx.moveTo(px, py);
-  ctx.lineTo(px, waveStartY);
+  ctx.moveTo(pP.x, pP.y);
+  ctx.lineTo(pWaveStart.x, pWaveStart.y);
   ctx.stroke();
   ctx.setLineDash([]);
 
-  // Damped Wave
+  // Damped Wave (warped by mouse proximity)
   const waveGrad = ctx.createLinearGradient(0, waveStartY, 0, cy);
   waveGrad.addColorStop(
     0,
@@ -233,10 +408,12 @@ function renderMobileWave(state, heroAlpha) {
     const d = y - waveStartY;
     const damping = Math.exp(-gamma * d);
     const wavePhase = angle - d * waveLengthFactor;
-    const wx = r * damping * Math.cos(wavePhase);
+    const rawX = r * damping * Math.cos(wavePhase);
 
-    if (y === waveStartY) ctx.moveTo(wx, y);
-    else ctx.lineTo(wx, y);
+    const pt = getDisplacedPoint(rawX, y, mouseX, mouseY);
+
+    if (y === waveStartY) ctx.moveTo(pt.x, pt.y);
+    else ctx.lineTo(pt.x, pt.y);
   }
   ctx.stroke();
 }
@@ -279,6 +456,10 @@ export function initCanvas() {
     time: 0,
     globalScale: 1,
     globalAlpha: 1,
+    mouseX: -1000,
+    mouseY: -1000,
+    targetMouseX: -1000,
+    targetMouseY: -1000,
     ctx,
     baseAccent
   };
@@ -296,6 +477,16 @@ export function initCanvas() {
   window.addEventListener("resize", resize);
   resize();
 
+  window.addEventListener("mousemove", (e) => {
+    state.targetMouseX = e.clientX - state.cx;
+    state.targetMouseY = e.clientY - state.cy;
+  }, { passive: true });
+
+  window.addEventListener("mouseleave", () => {
+    state.targetMouseX = -1000;
+    state.targetMouseY = -1000;
+  });
+
   window.addEventListener("scroll", () => {
     const maxScroll = Math.max(
       1,
@@ -307,6 +498,9 @@ export function initCanvas() {
   function draw() {
     ctx.clearRect(0, 0, state.width, state.height);
     state.time += 0.005;
+
+    state.mouseX += (state.targetMouseX - state.mouseX) * 0.08;
+    state.mouseY += (state.targetMouseY - state.mouseY) * 0.08;
 
     // Target collapse activates near the footer (0.88 - 1.0)
     const targetCollapse = smoothstep(0.88, 1.0, state.scrollProgress);
