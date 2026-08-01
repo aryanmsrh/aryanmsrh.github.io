@@ -44,6 +44,91 @@ section:not(#hero) {
     display: none;
 }
 
+/* =========================================
+   IN-PLACE SECTION COLLAPSE & TRANSPARENCY TOGGLE
+   ========================================= */
+section {
+    position: relative;
+    transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                -webkit-backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section > *,
+section .eyebrow {
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.is-collapsed {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+section.is-collapsed > *:not(.eyebrow-wrapper),
+section.is-collapsed .eyebrow {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(10px);
+    visibility: hidden;
+}
+
+.eyebrow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.eyebrow-wrapper .eyebrow {
+    margin-bottom: 0 !important;
+}
+
+/* Bigger, flat, non-glowy toggle button in-line with eyebrow */
+.section-collapse-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    color: var(--stone);
+    cursor: pointer;
+    box-shadow: none !important;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.section-collapse-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.section-collapse-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: var(--fg);
+}
+
+section.is-collapsed .section-collapse-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--accent);
+    box-shadow: none !important;
+}
+
 @media (max-width: 768px) {
     section {
         width: calc(100% - 32px);

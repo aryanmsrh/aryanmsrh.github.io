@@ -1,4 +1,4 @@
-import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements, initMouseShadow, initCustomCursor, initNavProgress, initFooterClock, initBackToTop } from "./modules/ui.js";
+import { initLoader, initMobileMenu, initScrollIndicator, initSvgElements, initMouseShadow, initCustomCursor, initNavProgress, initFooterClock, initBackToTop, initSectionCollapse } from "./modules/ui.js";
 import { initScrollObserver } from "./modules/observer.js";
 import { initModalListeners } from "./modules/projects.js";
 import { initCanvas } from "./modules/canvas.js";
@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderContact()
   ]);
 
+  initSectionCollapse();
   initScrollObserver();
   initModalListeners();
 });

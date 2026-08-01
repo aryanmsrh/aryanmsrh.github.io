@@ -28,32 +28,46 @@ function peak(min, max, value) {
 }
 
 /**
- * Renders a direction arrow vector onto the canvas.
+ * Renders a direction arrow vector onto the canvas with magnetic field bending.
  */
-function drawArrow(ctx, fromX, fromY, toX, toY, color) {
-  const headlen = 14;
-  const dx = toX - fromX;
-  const dy = toY - fromY;
-  const angle = Math.atan2(dy, dx);
-
+function drawArrow(ctx, fromX, fromY, toX, toY, color, mouseX = -1000, mouseY = -1000) {
+  const steps = 16;
   ctx.strokeStyle = color;
-  ctx.lineWidth = 2.5;
+  ctx.lineWidth = 3.5;
 
   ctx.beginPath();
-  ctx.moveTo(fromX, fromY);
-  ctx.lineTo(toX, toY);
+  for (let s = 0; s <= steps; s++) {
+    const t = s / steps;
+    const rx = fromX + (toX - fromX) * t;
+    const ry = fromY + (toY - fromY) * t;
+    const pt = getDisplacedPoint(rx, ry, mouseX, mouseY);
+    if (s === 0) ctx.moveTo(pt.x, pt.y);
+    else ctx.lineTo(pt.x, pt.y);
+  }
   ctx.stroke();
 
-  ctx.beginPath();
-  ctx.moveTo(toX, toY);
-  ctx.lineTo(
-    toX - headlen * Math.cos(angle - Math.PI / 6),
-    toY - headlen * Math.sin(angle - Math.PI / 6)
+  const pTip = getDisplacedPoint(toX, toY, mouseX, mouseY);
+  const pPrev = getDisplacedPoint(
+    fromX + (toX - fromX) * 0.9,
+    fromY + (toY - fromY) * 0.9,
+    mouseX,
+    mouseY
   );
-  ctx.moveTo(toX, toY);
+  const headlen = 20;
+  const dx = pTip.x - pPrev.x;
+  const dy = pTip.y - pPrev.y;
+  const angle = Math.atan2(dy, dx);
+
+  ctx.beginPath();
+  ctx.moveTo(pTip.x, pTip.y);
   ctx.lineTo(
-    toX - headlen * Math.cos(angle + Math.PI / 6),
-    toY - headlen * Math.sin(angle + Math.PI / 6)
+    pTip.x - headlen * Math.cos(angle - Math.PI / 6),
+    pTip.y - headlen * Math.sin(angle - Math.PI / 6)
+  );
+  ctx.moveTo(pTip.x, pTip.y);
+  ctx.lineTo(
+    pTip.x - headlen * Math.cos(angle + Math.PI / 6),
+    pTip.y - headlen * Math.sin(angle + Math.PI / 6)
   );
   ctx.stroke();
 }
@@ -90,21 +104,30 @@ function getDisplacedPoint(px, py, mouseX, mouseY, influenceRadius = 280) {
  */
 function renderGridAndVectors(state) {
   const { ctx, width, height, time, scrollProgress, globalAlpha, baseAccent, mouseX, mouseY } = state;
-  const gridSize = 60;
+  
+  const isMobile = width <= 768;
+  const isSmall = width <= 480;
+
+  // Responsive Grid Size & Vector Length
+  const gridSize = isSmall ? 48 : (isMobile ? 58 : 80);
   const mlDistortion = peak(0.2, 0.88, scrollProgress);
 
   ctx.save();
+  let scaleX = 1;
+  let shearY = 0;
+  let rotation = 0;
+
   if (mlDistortion > 0) {
-    const shearY = Math.sin(time * 2.2) * 0.55 * mlDistortion;
-    const scaleX = 1 + Math.cos(time * 1.8) * 0.35 * mlDistortion;
-    const rotation = Math.sin(time * 1.2) * 0.25 * mlDistortion;
+    shearY = Math.sin(time * 1.35) * 0.5 * mlDistortion;
+    scaleX = 1 + Math.cos(time * 1.1) * 0.3 * mlDistortion;
+    rotation = Math.sin(time * 0.75) * 0.2 * mlDistortion;
     ctx.transform(scaleX, shearY, 0, 1, 0, 0);
     ctx.rotate(rotation);
   }
 
   const numX = Math.ceil(width / gridSize) + 2;
   const numY = Math.ceil(height / gridSize) + 2;
-  const influenceRadius = 280;
+  const influenceRadius = 320;
 
   // Helper distance function: grid-aligned Manhattan & anisotropic blend (eliminates circular spotlight look)
   const getGridDist = (dx, dy) => 0.5 * Math.hypot(dx * 0.75, dy * 1.15) + 0.5 * (Math.abs(dx) + Math.abs(dy));
@@ -236,16 +259,139 @@ function renderGridAndVectors(state) {
     }
   }
 
+  // 4. Labeled Basis Vectors i_hat & j_hat + Translucent Unit Parallelogram Span (Area = det(A))
   if (mlDistortion > 0.01) {
-    const vLen = gridSize * 2.5;
-    const arrowColor = `rgba(${baseAccent}, ${0.5 * mlDistortion * globalAlpha})`;
+    const vLenBlocks = isMobile ? 2 : 3;
+    const vLen = gridSize * vLenBlocks;
 
+    const fontLabel = isSmall ? "bold 13px 'JetBrains Mono', monospace" : (isMobile ? "bold 15px 'JetBrains Mono', monospace" : "bold 18px 'JetBrains Mono', monospace");
+    const fontMatrix = isSmall ? "600 12px 'JetBrains Mono', monospace" : (isMobile ? "600 14px 'JetBrains Mono', monospace" : "600 16px 'JetBrains Mono', monospace");
+    const fontDet = isSmall ? "600 11px 'JetBrains Mono', monospace" : (isMobile ? "600 13px 'JetBrains Mono', monospace" : "600 15px 'JetBrains Mono', monospace");
+
+    // Basis vector points in current transformed space
     const pOrigin = getDisplacedPoint(0, 0, mouseX, mouseY);
-    const pX = getDisplacedPoint(vLen, 0, mouseX, mouseY);
-    const pY = getDisplacedPoint(0, -vLen, mouseX, mouseY);
+    const pI = getDisplacedPoint(vLen, 0, mouseX, mouseY);
+    const pJ = getDisplacedPoint(0, -vLen, mouseX, mouseY);
+    const pSum = getDisplacedPoint(vLen, -vLen, mouseX, mouseY);
 
-    drawArrow(ctx, pOrigin.x, pOrigin.y, pX.x, pX.y, arrowColor);
-    drawArrow(ctx, pOrigin.x, pOrigin.y, pY.x, pY.y, arrowColor);
+    // Render Translucent Unit Parallelogram Span (det(A) area) magnetically bending with grid lines
+    ctx.save();
+    ctx.beginPath();
+    const edgePoints = [
+      { x1: 0, y1: 0, x2: vLen, y2: 0 },
+      { x1: vLen, y1: 0, x2: vLen, y2: -vLen },
+      { x1: vLen, y1: -vLen, x2: 0, y2: -vLen },
+      { x1: 0, y1: -vLen, x2: 0, y2: 0 }
+    ];
+
+    const stepsPerEdge = 16;
+    let isFirst = true;
+    edgePoints.forEach(edge => {
+      for (let s = 0; s <= stepsPerEdge; s++) {
+        const t = s / stepsPerEdge;
+        const rx = edge.x1 + (edge.x2 - edge.x1) * t;
+        const ry = edge.y1 + (edge.y2 - edge.y1) * t;
+        const pt = getDisplacedPoint(rx, ry, mouseX, mouseY);
+        if (isFirst) {
+          ctx.moveTo(pt.x, pt.y);
+          isFirst = false;
+        } else {
+          ctx.lineTo(pt.x, pt.y);
+        }
+      }
+    });
+
+    ctx.closePath();
+    ctx.fillStyle = `rgba(43, 255, 136, ${0.11 * mlDistortion * globalAlpha})`;
+    ctx.fill();
+    ctx.strokeStyle = `rgba(43, 255, 136, ${0.45 * mlDistortion * globalAlpha})`;
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.stroke();
+    ctx.restore();
+
+    // Basis Vector i_hat (Green Accent #2bff88)
+    const iColor = `rgba(43, 255, 136, ${0.98 * mlDistortion * globalAlpha})`;
+    drawArrow(ctx, 0, 0, vLen, 0, iColor, mouseX, mouseY);
+
+    // Label i_hat
+    ctx.font = fontLabel;
+    ctx.fillStyle = iColor;
+    ctx.fillText("î", pI.x + (isMobile ? 8 : 14), pI.y + 6);
+
+    // Basis Vector j_hat (Cyan Accent #38bdf8)
+    const jColor = `rgba(56, 189, 248, ${0.98 * mlDistortion * globalAlpha})`;
+    drawArrow(ctx, 0, 0, 0, -vLen, jColor, mouseX, mouseY);
+
+    // Label j_hat
+    ctx.font = fontLabel;
+    ctx.fillStyle = jColor;
+    ctx.fillText("ĵ", pJ.x - (isMobile ? 4 : 6), pJ.y - (isMobile ? 8 : 14));
+
+    // 5. 3Blue1Brown Grid-Anchored Live Matrix Notation A = [a b; c d] & det(A)
+    const cosR = Math.cos(rotation);
+    const sinR = Math.sin(rotation);
+    const a = (scaleX * cosR - shearY * sinR).toFixed(2);
+    const b = (-sinR).toFixed(2);
+    const c = (scaleX * sinR + shearY * cosR).toFixed(2);
+    const d = (cosR).toFixed(2);
+    const detVal = (scaleX).toFixed(2);
+
+    // Matrix notation position: placed cleanly BELOW the horizontal i_hat vector
+    const rawMatrixX = isMobile ? (-vLen * 0.05) : (vLen * 0.15);
+    const rawMatrixY = isMobile ? 28 : 42;
+
+    const pMatrixPos = getDisplacedPoint(rawMatrixX, rawMatrixY, mouseX, mouseY);
+    const mx = pMatrixPos.x;
+    const my = pMatrixPos.y;
+
+    const alpha = mlDistortion * globalAlpha;
+    const col1Color = `rgba(43, 255, 136, ${0.98 * alpha})`;  // Green (column 1 = i_hat)
+    const col2Color = `rgba(56, 189, 248, ${0.98 * alpha})`;  // Cyan (column 2 = j_hat)
+    const bracketColor = `rgba(255, 255, 255, ${0.88 * alpha})`;
+
+    // Draw Matrix Label "A ="
+    ctx.font = fontLabel;
+    ctx.fillStyle = bracketColor;
+    ctx.fillText("A = ", mx, my + (isMobile ? 14 : 20));
+
+    const bx = mx + (isMobile ? 32 : 42); // Bracket start position
+    const colWidth = isMobile ? 48 : 65;
+
+    // Draw Left Bracket '['
+    ctx.strokeStyle = bracketColor;
+    ctx.lineWidth = isMobile ? 1.8 : 2.4;
+    ctx.beginPath();
+    ctx.moveTo(bx + (isMobile ? 4 : 6), my - (isMobile ? 5 : 8));
+    ctx.lineTo(bx, my - (isMobile ? 5 : 8));
+    ctx.lineTo(bx, my + (isMobile ? 28 : 40));
+    ctx.lineTo(bx + (isMobile ? 4 : 6), my + (isMobile ? 28 : 40));
+    ctx.stroke();
+
+    // Column 1 (i_hat landing: a, c in Green)
+    ctx.font = fontMatrix;
+    ctx.fillStyle = col1Color;
+    ctx.fillText(a.padStart(5), bx + (isMobile ? 6 : 10), my + (isMobile ? 10 : 14));
+    ctx.fillText(c.padStart(5), bx + (isMobile ? 6 : 10), my + (isMobile ? 24 : 34));
+
+    // Column 2 (j_hat landing: b, d in Cyan)
+    ctx.fillStyle = col2Color;
+    ctx.fillText(b.padStart(5), bx + colWidth, my + (isMobile ? 10 : 14));
+    ctx.fillText(d.padStart(5), bx + colWidth, my + (isMobile ? 24 : 34));
+
+    // Draw Right Bracket ']'
+    const rbx = bx + colWidth + (isMobile ? 48 : 70);
+    ctx.beginPath();
+    ctx.moveTo(rbx - (isMobile ? 4 : 6), my - (isMobile ? 5 : 8));
+    ctx.lineTo(rbx, my - (isMobile ? 5 : 8));
+    ctx.lineTo(rbx, my + (isMobile ? 28 : 40));
+    ctx.lineTo(rbx - (isMobile ? 4 : 6), my + (isMobile ? 28 : 40));
+    ctx.stroke();
+
+    // det(A) label below matrix
+    ctx.font = fontDet;
+    ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * alpha})`;
+    ctx.fillText(`det = ${detVal}`, bx + (isMobile ? 16 : 28), my + (isMobile ? 44 : 64));
   }
   ctx.restore();
 }
