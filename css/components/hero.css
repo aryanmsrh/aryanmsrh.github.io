@@ -10,11 +10,12 @@
     align-items: center;
     padding-top: 80px;
     padding-bottom: 155px;
-    background: transparent;
-    border: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    will-change: auto !important;
 }
 
 h1.name {
@@ -91,7 +92,7 @@ h1.name {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    opacity: 0;
+    opacity: 1; /* Was 0, now visible by default since children will hide */
 }
 
 .hero-stats::-webkit-scrollbar {
@@ -100,39 +101,44 @@ h1.name {
     height: 0;
 }
 
-#loader.hide ~ #hero .hero-stats {
-    animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
-}
+/* Animation removed from container */
 
 .stat-card {
     --card-accent: var(--accent);
     flex: 0 0 240px;
     width: 240px;
     max-width: 240px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--line);
-    backdrop-filter: blur(12px) saturate(10%);
-    -webkit-backdrop-filter: blur(12px) saturate(10%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px) saturate(200%);
+    -webkit-backdrop-filter: blur(5px) saturate(200%);
     padding: 12px 16px;
     border-radius: 0px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     text-decoration: none;
     color: var(--off-white);
     scroll-snap-align: start;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 border-color 0.35s ease,
                 box-shadow 0.35s ease,
                 background 0.35s ease;
     position: relative;
     overflow: hidden;
+    opacity: 0;
+}
+
+#loader.hide ~ #hero .stat-card {
+    animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.1s forwards;
 }
 
 .stat-card:hover {
     border-color: var(--card-accent);
-    background: color-mix(in srgb, var(--card-accent) 6%, transparent);
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-accent) 15%, rgba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0.03));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 .stat-icon-wrapper {
@@ -234,12 +240,10 @@ h1.name {
     justify-content: center;
     gap: 14px;
     margin-top: 36px;
-    opacity: 0;
+    opacity: 1; /* Children will hide */
 }
 
-#loader.hide ~ #hero .hero-actions {
-    animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
-}
+/* Animation removed from container */
 
 .hero-actions .hero-btn {
     position: relative;
@@ -247,20 +251,33 @@ h1.name {
     align-items: center;
     justify-content: center;
     padding: 13px 20px;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--off-white);
-    background: rgba(255, 255, 255, 0.02);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(5px) saturate(200%);
+    -webkit-backdrop-filter: blur(5px) saturate(200%);
+    /* box-shadow: */
+        /* inset 0 1px 0 rgba(255, 255, 255, 0.25), */
+        /* 0 8px 24px rgba(0, 0, 0, 0.45); */
     transition: border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 color 0.45s,
-                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow 0.45s,
+                translate 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+}
+
+#loader.hide ~ #hero .hero-actions .hero-btn {
+    animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
 }
 
 .hero-actions .hero-btn:hover {
     border-color: var(--accent);
-    background: rgba(43, 255, 136, 0.08);
+    background: linear-gradient(135deg, rgba(43, 255, 136, 0.15), rgba(255, 255, 255, 0.04));
     color: var(--accent);
-    transform: translateY(-2px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 /* Subtle Hover Tooltips */
@@ -301,30 +318,35 @@ h1.name {
     bottom: 95px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--accent);
+    color: var(--off-white);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 0px;
-    background: rgba(20, 30, 20, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: -px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
     opacity: 0;
     z-index: 2;
     text-decoration: none;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s ease;
 }
 
 .scroll-indicator svg {
-    stroke: rgb(50, 150, 50);
+    stroke: var(--off-white);
+    transition: stroke 0.35s ease;
 }
 
 #loader.hide ~ #hero .scroll-indicator {
     opacity: 1;
-    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 3.9s, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 3.9s,
+                border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.45s ease;
 }
 
 #loader.hide ~ #hero .scroll-indicator svg {
@@ -332,9 +354,15 @@ h1.name {
 }
 
 .scroll-indicator:hover {
-    border-color: var(--accent);
-    background: rgba(20, 30, 20, 1.0);
-    box-shadow: 0 0 15px rgba(20, 30, 20, 0.2);
+    border-color: var(--accent-dim);
+    background: linear-gradient(135deg, rgba(43, 255, 136, 0.15), rgba(255, 255, 255, 0.04));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.scroll-indicator:hover svg {
+    stroke: var(--accent-dim);
 }
 
 #loader.hide ~ #hero .scroll-indicator.fade-out,
@@ -352,13 +380,18 @@ h1.name {
 }
 
 @keyframes heroReveal {
-    from {
+    0% {
         opacity: 0;
         transform: translateY(22px);
     }
-    to {
+    99% {
         opacity: 1;
         transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+        will-change: auto;
     }
 }
 
@@ -434,9 +467,9 @@ h1.name {
         width: 230px;
         max-width: 230px;
         padding: 10px 14px;
-        gap: 10px;
+        gap: 8px;
         scroll-snap-align: center;
-        border-radius: 6px;
+        border-radius: 0px;
     }
 
     .stat-icon-wrapper {
