@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      href="assets/fonts/space-grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/inter.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/jetbrains-mono.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>404 — Aryan Mishra</title>
+  </head>
+  <body>
+    <!-- INTERACTIVE CANVAS BACKGROUND -->
+    <canvas id="math-field"></canvas>
+
+    <!-- MOUSE SHADOW & CURSOR -->
+    <div class="mouse-shadow" id="mouse-shadow"></div>
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- 404 MINIMALIST CONTENT PAGE -->
+    <main class="not-found-page">
+      <div class="not-found-content">
+        <h1 class="not-found-code">404</h1>
+        <div class="not-found-tag">// RESOURCE_NOT_FOUND</div>
+        <p class="not-found-desc">
+          This page or resource is under development or unavailable.
+        </p>
+        <div class="hero-actions" style="justify-content: center; margin-top: 1.5rem;">
+          <a
+            class="btn hero-btn"
+            href="index.html"
+            aria-label="Return to Home"
+            data-tooltip="Return to Home"
+            data-svg="assets/svgs/home.svg"
+          ></a>
+          <a
+            class="btn hero-btn"
+            href="https://github.com/aryanmsrh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            data-tooltip="GitHub Profile"
+            data-svg="assets/svgs/github.svg"
+          ></a>
+        </div>
+      </div>
+    </main>
+
+    <!-- JAVASCRIPT MODULE LOADER -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

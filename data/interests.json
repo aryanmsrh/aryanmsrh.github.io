@@ -6,17 +6,17 @@
       {
         "title": "Graph Theory & Shortest Paths",
         "url": "https://visualgo.net/en/sssp",
-        "description": "Interactive visualizer for Dijkstra, A*, and Tarjan's SCC algorithms."
+        "description": "Interactive visualizer for Dijkstra, A*, and graph traversal algorithms."
       },
       {
         "title": "Dynamic Programming Patterns",
         "url": "https://cp-algorithms.com/dynamic_programming/intro-to-dp.html",
-        "description": "Comprehensive guide on state compression, memoization, and DAG pathfinding."
+        "description": "Guides on memoization, state compression, and DAG pathfinding."
       },
       {
         "title": "Advanced Data Structures",
         "url": "https://cp-algorithms.com/data_structures/segment_tree.html",
-        "description": "Segment Trees with Lazy Propagation, Trie, and Disjoint Set Union."
+        "description": "Segment Trees, Disjoint Set Union (DSU), and Trie implementations."
       }
     ]
   },
@@ -27,12 +27,12 @@
       {
         "title": "Convex Optimization (Boyd & Vandenberghe)",
         "url": "https://web.stanford.edu/~boyd/cvxbook/",
-        "description": "The definitive Stanford reference on first-order methods and L-BFGS convergence."
+        "description": "Standard reference on convex sets, first-order optimization, and gradient methods."
       },
       {
         "title": "Constrained Optimization & KKT",
         "url": "https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions",
-        "description": "Lagrange Multipliers, KKT conditions, and interior-point methods."
+        "description": "Notes on Lagrange multipliers, KKT conditions, and optimization theory."
       }
     ]
   },
@@ -43,17 +43,17 @@
       {
         "title": "Attention Is All You Need (Vaswani et al.)",
         "url": "https://arxiv.org/abs/1706.03762",
-        "description": "The landmark 2017 Transformer paper introducing self-attention mechanisms."
+        "description": "The 2017 paper introducing Transformer architectures and self-attention mechanisms."
       },
       {
         "title": "OpenAI Spinning Up in Deep RL",
         "url": "https://spinningup.openai.com/",
-        "description": "Educational resource on Policy Gradients, Actor-Critic, and Q-Learning mathematics."
+        "description": "Educational resource covering reinforcement learning algorithms and mathematical formulations."
       },
       {
         "title": "What are Diffusion Models? (Lilian Weng)",
         "url": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/",
-        "description": "Deep dive into score-based generative models and latent space sampling."
+        "description": "Clear walkthrough of score-based generative models and latent sampling."
       }
     ]
   },
@@ -64,12 +64,12 @@
       {
         "title": "Essence of Linear Algebra (3Blue1Brown)",
         "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2yVFitg8hEyAB6",
-        "description": "Geometric intuition for eigenvectors, SVD, and matrix transformations."
+        "description": "Visual intuitions for matrix transformations, eigenvectors, and determinants."
       },
       {
         "title": "How to Use t-SNE Effectively (Distill.pub)",
         "url": "https://distill.pub/2016/misread-tsne/",
-        "description": "Interactive article on manifold learning and high-dimensional visualization."
+        "description": "Interactive visual article on high-dimensional data visualization."
       }
     ]
   },
@@ -80,28 +80,28 @@
       {
         "title": "Seeing Theory: Bayesian Inference",
         "url": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
-        "description": "Brown University's visual introduction to prior distributions and MAP estimation."
+        "description": "Visual introductions to probability distributions and Bayesian estimation."
       },
       {
         "title": "Interactive Markov Chains (Setosa)",
         "url": "https://setosa.io/ev/markov-chains/",
-        "description": "Visual explanation of stationary distributions and stochastic state transitions."
+        "description": "Visual explanations of state transitions and stationary distributions."
       }
     ]
   },
   {
-    "label": "Physics",
+    "label": "Physics & Simulation",
     "glyph": "F = ma",
     "items": [
       {
         "title": "Smoothed Particle Hydrodynamics (M. Müller)",
         "url": "https://matthias-research.github.io/pages/publications/sphondam.pdf",
-        "description": "Seminal paper on real-time fluid simulation and particle dynamics."
+        "description": "Introductory paper on real-time fluid simulation and particle dynamics."
       },
       {
-        "title": "IBM Quantum Learning Platform",
+        "title": "IBM Quantum Learning",
         "url": "https://learning.quantum.ibm.com/",
-        "description": "Interactive textbook on qubit statevectors, gate operators, and circuits."
+        "description": "Textbook introduction to qubit state vectors, gates, and quantum circuits."
       }
     ]
   },
@@ -112,12 +112,12 @@
       {
         "title": "In Search of an Understandable Consensus Algorithm (Raft)",
         "url": "https://raft.github.io/raft.pdf",
-        "description": "Diego Ongaro & John Ousterhout's Stanford paper on distributed consensus."
+        "description": "Stanford paper introducing the Raft distributed consensus algorithm."
       },
       {
         "title": "What Every Programmer Should Know About Memory",
         "url": "https://people.freebsd.org/~lstewart/articles/cpumemory.pdf",
-        "description": "Ulrich Drepper's classic guide on CPU caches, NUMA, and SIMD vectorization."
+        "description": "Classic technical paper on CPU cache hierarchies, memory access, and hardware interaction."
       }
     ]
   }

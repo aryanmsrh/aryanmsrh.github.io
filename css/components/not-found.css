@@ -1,0 +1,68 @@
+/* --- 404 Minimalist Page Styles --- */
+.not-found-page,
+main.not-found-page,
+section.not-found-page {
+    min-height: 100vh !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 2;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+}
+
+.not-found-content {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 0 1.5rem !important;
+    max-width: 600px !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+.not-found-code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(6rem, 16vw, 10rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--off-white);
+    margin: 0 0 1rem 0 !important;
+}
+
+.not-found-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem !important;
+}
+
+.not-found-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin: 0 auto 2.5rem auto !important;
+    max-width: 440px !important;
+}
+
+.not-found-page .hero-actions .hero-btn {
+    opacity: 1 !important;
+    animation: none !important;
+}
+

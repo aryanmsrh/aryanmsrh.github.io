@@ -1,7 +1,7 @@
 {
   "paragraphs": [
-    "I am a Computer Science & Mathematics undergraduate at BITS Pilani with a deep passion for building high-performance systems and exploring mathematical principles from the ground up.",
-    "My work spans algorithmic optimization, interactive visualizers, low-level computing, and modular web architecture. Whether dissecting complex algorithms or designing clean visual systems, I prioritize clarity, resilience, and first-principles thinking."
+    "I am a first-year dual degree student. I'm interested in the space that lies between mathematical modeling and high-performance computing.",
+    "My main focus right now is on competitive programming, numerical methods, optimization techniques, and rigorous problem-solving. I prioritize understanding the tools from scratch to grasp the core principles before applying them. I am currently learning to write fast C++ and developing an intuitive understanding of the math behind the fundamental algorithms."
   ],
   "facts": [
     {
@@ -9,16 +9,16 @@
       "value": "India"
     },
     {
-      "label": "Education",
+      "label": "Current Focus",
+      "value": "Competitive Programming & Applied Math"
+    },
+    {
+      "label": "Pursuing",
+      "value": "Dual Degree (Math + CS Upcoming)"
+    },
+    {
+      "label": "Institution",
       "value": "BITS Pilani"
-    },
-    {
-      "label": "Degree",
-      "value": "BE CS + MS Mathematics"
-    },
-    {
-      "label": "Focus",
-      "value": "Systems & Competitive Programming"
     }
   ]
 }

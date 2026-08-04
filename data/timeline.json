@@ -1,27 +1,32 @@
 [
   {
     "year": "Future",
-    "title": "Continuous Convergence",
-    "description": "Exploring high-performance parallel architectures, low-latency distributed consensus systems, and first-principles algorithm design."
+    "title": "Future Focus",
+    "description": "Prioritizing competitive programming, numerical methods, algorithm optimization, and foundational computer science topics."
   },
   {
     "year": "2026",
-    "title": "BITS Pilani — Hyderabad Campus",
-    "description": "Pursuing Computer Science & Mathematics. Specializing in systems architecture, algorithm optimization, and computational theory while building production-grade software."
+    "title": "BITS Pilani",
+    "description": "First-year Dual Degree student in Mathematics. Currently studying calculus, linear algebra, discrete math, and C++ programming."
   },
   {
-    "year": "2025",
-    "title": "Neural Network Engine & Deep Learning Systems",
-    "description": "Engineered a custom matrix autodiff and neural network framework from scratch. Built backpropagation routines without external ML libraries, achieving 97%+ test accuracy on MNIST."
+    "year": "2026",
+    "title": "Neural Network Engine",
+    "description": "Built a feedforward neural network from scratch using NumPy to understand backpropagation equations and gradient flow."
+  },
+  {
+    "year": "2024 – 2026",
+    "title": "Grade XI - XII & National Entrances",
+    "description": "Secured AIR 254 out of 75,000+ candidates in IIIT Hyderabad's UGEE exam, and achieved a 98.93 percentile in JEE Main. Cleared Grade XII (CBSE) Examination."
   },
   {
     "year": "2023",
-    "title": "Arduino & Embedded Systems Explorations",
-    "description": "A focused year exploring low-level hardware interfaces, sensor fusion, real-time microcontrollers, custom PCB logic, and embedded firmware."
+    "title": "Grade X",
+    "description": "Cleared Grade X (ICSE), focusing on core mathematics, physics, and problem-solving foundations."
   },
   {
-    "year": "2022",
-    "title": "HandMobile Gesture Robotics",
-    "description": "Designed and assembled my first real hardware-software integration project — controlling a robotic vehicle in real time using IMU gesture tracking and wireless telemetry."
+    "year": "2020 – 2022",
+    "title": "Early Projects (Middle School)",
+    "description": "Archived GitHub containing my earliest coding experiments from middle school. Built through trial and error before starting formal CS foundations."
   }
 ]

@@ -52,7 +52,7 @@ function initCardHoverEffect(card) {
  * @param {Object} p
  * @returns {HTMLElement}
  */
-function createProjectCard(p) {
+function createProjectCard(p, extSvg) {
   const card = document.createElement("div");
   card.className = "proj-card";
 
@@ -81,7 +81,7 @@ function createProjectCard(p) {
       <div class="proj-media-overlay">
         <button class="proj-open-btn" aria-label="Open project modal">
           <span>Open</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          ${extSvg}
         </button>
       </div>
     </div>
@@ -146,7 +146,7 @@ export async function renderProjects() {
       if (p.id) {
         projects[p.id] = p;
       }
-      const card = createProjectCard(p);
+      const card = createProjectCard(p, extSvg);
       container.appendChild(card);
     });
   } catch (err) {

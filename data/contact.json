@@ -1,29 +1,29 @@
 [
   {
     "label": "GitHub",
-    "sub": "@aryanhm",
-    "url": "https://github.com",
+    "sub": "@aryanmsrh",
+    "url": "https://github.com/aryanmsrh",
     "target": "_blank",
     "svg": "assets/svgs/contact-github.svg"
   },
   {
     "label": "LinkedIn",
-    "sub": "in/aryanhm",
-    "url": "https://linkedin.com",
+    "sub": "@aryanmsrh",
+    "url": "404.html",
     "target": "_blank",
     "svg": "assets/svgs/linkedin.svg"
   },
   {
     "label": "Email",
-    "sub": "hello@example.com",
-    "url": "mailto:hello@example.com",
+    "sub": "aryanmishra.dev@gmail.com",
+    "url": "mailto:aryanmishra.dev@gmail.com",
     "target": "",
     "svg": "assets/svgs/email.svg"
   },
   {
     "label": "Instagram",
-    "sub": "@aryanhm",
-    "url": "https://instagram.com",
+    "sub": "@aryanmsrh",
+    "url": "404.html",
     "target": "_blank",
     "svg": "assets/svgs/instagram.svg"
   }

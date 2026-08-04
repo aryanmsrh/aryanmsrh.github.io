@@ -1,33 +1,33 @@
 [
   {
     "id": "neural-net",
-    "title": "Neural Network Engine",
-    "description": "A feedforward network built from raw NumPy — every gradient computed and checked by hand.",
-    "tags": ["NumPy", "Backprop", "Adam"],
+    "title": "Neural Engine",
+    "description": "A modular deep learning framework built from scratch in NumPy. Features vectorised backpropagation, automatic gradient derivations, and SGD optimizers, achieving ~97.5% accuracy on MNIST without PyTorch or external ML libraries.",
+    "tags": ["Machine Learning", "Linear Algebra", "Calculus"],
     "githubLink": "https://github.com/aryanmsrh/neural-engine-numpy",
     "liveLink": null,
-    "youtubeLink": "https://www.youtube.com/watch?v=WFLVy8av3O0",
+    "youtubeLink": "https://youtu.be/KnZg2GKFDcQ?si=dKoGo8WjYsYyUoPV",
     "image": "assets/imgs/project-nn.png",
-    "question": "Could I build a modular neural network framework using only NumPy — while understanding every line — instead of importing PyTorch?",
+    "question": "How does Backpropagation work? What is the Hebbian Theory?",
     "journey": [
-      "I wanted to know what backpropagation actually computes, not just what it's called. So the rule was simple: no autograd, no framework — every gradient derived and written by hand.",
-      "The engine ended up with dense layers, He initialization, SGD and Adam optimizers, and a softmax cross-entropy loss built from the definition upward.",
-      "It reached 97% accuracy on MNIST. The number mattered less than being able to explain, at every layer, exactly why the loss went down."
+      "I wanted to see if I could build a working neural network library using just NumPy. Instead of using automatic differentiation, I derived the matrix calculus for the forward and backward passes on paper first.",
+      "The library is modular (similar to PyTorch) and includes dense layers, He initialization, ReLU activations, SGD, and a fused Softmax + Cross-Entropy loss layer that prevents overflow errors.",
+      "I trained it on MNIST using mini-batching and hit ~97.5% test accuracy. It was a great project to understand loss gradients, matrix multiplication, and training mechanics at a low level."
     ],
-    "stack": "Mathematics · NumPy · Python"
+    "stack": "Python · NumPy · Linear Algebra"
   },
   {
     "id": "more",
-    "title": "More to come",
-    "description": "Currently exploring new architectures and scaling laws. New systems will be documented here once they converge.",
-    "tags": ["Research"],
+    "title": "More to Come",
+    "description": "Currently learning numerical methods and writing fast C++. I'm also exploring the underlying math of Transformers and Computational Linguistics to get a better grip on how LLMs work. New projects will be posted here as I build them.",
+    "tags": ["Applied Math", "Machine Learning", "Transformers"],
     "githubLink": null,
     "liveLink": null,
     "youtubeLink": null,
-    "question": "What happens at the boundary where mathematical theory meets silicon?",
+    "question": "...Uhh, what's the question here?",
     "journey": [
-      "Currently researching parallel matrix algorithms, distributed consensus, and low-latency systems.",
-      "New write-ups and repos will be documented here as projects converge."
+      "I'm still figuring out the right questions to ask",
+      "When I do, I'll try to answer them too."
     ],
     "image": "assets/imgs/more-to-come.gif",
     "stack": "Socrates · The Method"
@@ -35,18 +35,19 @@
   {
     "id": "early-projects",
     "title": "Early Projects (2020-2022)",
-    "description": "Archived GitHub. It contains my first experiments from ages 11-13, before rebuilding from first principles. No longer maintained, last significant update was in 2022.",
-    "tags": ["Fossil", "Dilapidated", "Jurrassic"],
+    "description": "Archived GitHub containing my earliest learning from middle school. No longer maintained since 4+ years.",
+    "tags": ["Fossil", "Dilapidated", "Jurassic"],
     "githubLink": "https://github.com/ahmishra",
     "liveLink": null,
     "youtubeLink": null,
     "image": "assets/imgs/archived.png",
-    "question": "What did the first lines of code look like before frameworks, abstraction layers, or formal software engineering?",
+    "question": "Why does this work, and why is this so fun?",
     "journey": [
-      "Between 2020 and 2022, learning wasn't driven by formal roadmaps — it was pure trial, error, and hacking together scripts to see what moved on screen.",
-      "This repository holds those initial experiments: early OpenCV gesture loops, basic motor drivers, serial controls, and unpolished automation scripts.",
-      "Though long retired and unmaintained, these projects are preserved as a relic of the original spark that led to rebuilding systems from first principles."
+      "When I first started programming around ages 11-13, learning was just trial and error, writing small scripts to see what worked on screen.",
+      "This old account holds that initial learning phase: Early Websites, AI Experimentation, Arduino, Image Processing, Etc. Although I never fully understood the math going on behind the scenes when experimenting with these tools, I genuinely liked to tinker with them, this phase helps me appreciate today the value of building things from scratch and understanding the insane amount of math and effort that goes behind the things we take for granted.",
+      "While long retired and unmaintained, I keep this account around as a nostalgic reminder of how I first got started with programming.",
+      "Consider this a wild software museum piece, unmaintained and untouched."
     ],
-    "stack": "Curiosity · Interest · Free Time"
+    "stack": "Curiosity · Copious Free Time · StackOverflow Copy-Pasta"
   }
 ]

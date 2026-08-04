@@ -1,6 +1,6 @@
 /**
  * Credentials Section Module
- * Renders detailed credential cards from /data/stats.json using assets/svgs/
+ * Renders detailed credential cards from /data/credentials.json using assets/svgs/
  */
 
 import { getSvg } from "./svg.js";
@@ -10,13 +10,14 @@ export async function renderCredentials() {
   if (!container) return;
 
   try {
-    const res = await fetch("/data/stats.json");
+    const res = await fetch("/data/credentials.json");
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     const data = await res.json();
-    const statsList = Array.isArray(data.stats)
-      ? data.stats.filter((item) => item.active !== false)
+    const rawList = data.credentials || [];
+    const statsList = Array.isArray(rawList)
+      ? rawList.filter((item) => item.active !== false)
       : [];
 
     if (statsList.length === 0) return;

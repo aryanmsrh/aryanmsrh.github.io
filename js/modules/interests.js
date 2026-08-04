@@ -2,6 +2,8 @@
  * Interests Section Module ("Things I think about")
  */
 
+import { getSvg } from "./svg.js";
+
 export async function renderInterests() {
   const container = document.querySelector(".think-list");
   if (!container) return;
@@ -12,6 +14,11 @@ export async function renderInterests() {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     const items = await res.json();
+
+    const [arrowSvg, chevronSvg] = await Promise.all([
+      getSvg("assets/svgs/arrow-up-right.svg"),
+      getSvg("assets/svgs/chevron-down.svg")
+    ]);
 
     container.innerHTML = items
       .map((item, index) => {
@@ -28,10 +35,7 @@ export async function renderInterests() {
                   ${sub.description ? `<div class="think-link-desc">${sub.description}</div>` : ""}
                 </div>
                 <div class="think-link-icon" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
+                  ${arrowSvg}
                 </div>
               </a>`
               )
@@ -47,9 +51,7 @@ export async function renderInterests() {
                   hasItems
                     ? `<button class="think-toggle-badge" aria-label="Toggle ${item.label} links">
                         <span class="count">${itemCount} ${itemCount === 1 ? 'link' : 'links'}</span>
-                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+                        ${chevronSvg}
                       </button>`
                     : ""
                 }

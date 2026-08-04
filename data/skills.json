@@ -1,45 +1,40 @@
 [
   {
     "category": "Languages",
-    "description": "Primary languages for systems engineering, matrix math, and modular web interfaces.",
+    "description": "Languages I use for coursework, problem-solving, and personal projects.",
     "skills": [
-      { "name": "C++", "level": "Expert" },
-      { "name": "Python", "level": "Expert" },
-      { "name": "JavaScript", "level": "Expert" },
-      { "name": "HTML & CSS", "level": "Proficient" },
-      { "name": "Rust", "level": "Learning" }
+      { "name": "Python", "level": "Comfortable" },
+      { "name": "HTML & CSS", "level": "Comfortable" },
+      { "name": "JavaScript", "level": "Comfortable" },
+      { "name": "C++", "level": "Learning" }
     ]
   },
   {
     "category": "Mathematics & Theory",
-    "description": "Theoretical foundation for algorithmic optimization and model derivation.",
+    "description": "Mathematical subjects and foundational theory I am currently studying.",
     "skills": [
-      { "name": "Linear Algebra", "level": "Proficient" },
-      { "name": "Autodiff & Backprop", "level": "Expert" },
-      { "name": "Calculus", "level": "Proficient" },
-      { "name": "Graph Theory", "level": "Expert" },
-      { "name": "Complexity Theory", "level": "Proficient" }
+      { "name": "Linear Algebra", "level": "Learning" },
+      { "name": "Calculus", "level": "Learning" },
+      { "name": "Probability & Statistics", "level": "Learning" },
+      { "name": "Complexity Theory", "level": "Learning" }
     ]
   },
   {
     "category": "Systems & Engineering",
-    "description": "Low-level computing abstractions, matrix operations, and modular software.",
+    "description": "Developer tools, computational libraries, and core computer science concepts.",
     "skills": [
-      { "name": "NumPy", "level": "Proficient" },
-      { "name": "DSA", "level": "Expert" },
-      { "name": "Linux", "level": "Proficient" },
+      { "name": "NumPy", "level": "Comfortable" },
       { "name": "Git", "level": "Comfortable" },
-      { "name": "ES Modules", "level": "Proficient" }
+      { "name": "DSA", "level": "Learning" },
+      { "name": "Linux", "level": "Learning" }
     ]
   },
   {
-    "category": "Embedded & Hardware",
-    "description": "Real-time microcontrollers, sensor telemetry, and hardware integration.",
+    "category": "Electronics & Hardware",
+    "description": "Microcontroller basics, hardware interfaces, and computer architecture fundamentals.",
     "skills": [
-      { "name": "Embedded C", "level": "Comfortable" },
-      { "name": "Sensor Fusion", "level": "Proficient" },
-      { "name": "RF Controls", "level": "Comfortable" },
-      { "name": "MCU Interfacing", "level": "Learning" }
+      { "name": "Embedded C", "level": "Learning" },
+      { "name": "CPU Architecture", "level": "Learning" }
     ]
   }
 ]

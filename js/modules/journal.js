@@ -4,6 +4,8 @@
  * Opens a Medium-style reading modal on card click.
  */
 
+import { getSvg } from "./svg.js";
+
 let journalItems = {};
 
 function escapeHtml(str) {
@@ -33,6 +35,9 @@ export function parseMarkdown(text) {
   html = html.replace(/^>\s+(.*$)/gim, "<blockquote>$1</blockquote>");
 
   // Headings
+  html = html.replace(/^###### (.*$)/gim, "<h6>$1</h6>");
+  html = html.replace(/^##### (.*$)/gim, "<h5>$1</h5>");
+  html = html.replace(/^#### (.*$)/gim, "<h4>$1</h4>");
   html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>");
   html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>");
   html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>");
@@ -46,9 +51,15 @@ export function parseMarkdown(text) {
   });
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="journal-link">$1</a>');
 
-  // Bullet lists
-  html = html.replace(/^\s*[-•*]\s+(.*$)/gim, "<li>$1</li>");
-  html = html.replace(/(<li>.*<\/li>)/gim, "<ul>$1</ul>");
+  // Bullet lists (group contiguous list items into a single <ul>)
+  html = html.replace(/(?:^\s*[-•*]\s+.*(?:\n|$))+/gm, (listBlock) => {
+    const items = listBlock
+      .trim()
+      .split("\n")
+      .map((line) => line.replace(/^\s*[-•*]\s+(.*$)/, "<li>$1</li>"))
+      .join("");
+    return `<ul>${items}</ul>`;
+  });
 
   // Paragraph splitting
   const blocks = html.split(/\n\n+/);
@@ -143,6 +154,8 @@ export async function renderJournal() {
     journalItems = {};
 
     container.innerHTML = "";
+    
+    const arrowRightSvg = await getSvg("assets/svgs/arrow-right.svg");
 
     items.forEach((item) => {
       if (item.id) journalItems[item.id] = item;
@@ -167,7 +180,7 @@ export async function renderJournal() {
           <p class="journal-excerpt">${item.excerpt || ""}</p>
           <div class="journal-read-link">
             <span>Read</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            ${arrowRightSvg}
           </div>
         </div>
       `;

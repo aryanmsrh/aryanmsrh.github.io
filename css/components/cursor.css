@@ -1,5 +1,5 @@
 /* =========================================
-   CUSTOM RETICLE CURSOR (GREYSCALE TONE)
+   CUSTOM SQUARE RETICLE CURSOR (#fff)
    ========================================= */
 
 @media (pointer: fine) {
@@ -16,20 +16,23 @@
         z-index: 99999;
         opacity: 0;
         will-change: transform;
+        border-radius: 0 !important;
     }
 
     #custom-cursor-dot {
-        width: 4px;
-        height: 4px;
-        background: rgba(220, 220, 220, 0.85);
-        transition: opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        width: 6px;
+        height: 6px;
+        background: #ffffff;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+        transition: opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
     }
 
     #custom-cursor-ring {
-        width: 16px;
-        height: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(255, 255, 255, 0.02);
+        width: 28px;
+        height: 28px;
+        border: 1.5px solid #ffffff;
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
         transition: opacity 0.3s ease, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -41,21 +44,23 @@
 
     /* Hover State over interactive elements */
     #custom-cursor-ring.hover {
-        width: 24px;
-        height: 24px;
-        border-color: rgba(255, 255, 255, 0.6);
-        background: rgba(255, 255, 255, 0.06);
+        width: 44px;
+        height: 44px;
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
     }
 
     #custom-cursor-dot.hover {
         background: #ffffff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
     }
 
     /* Pressed / Click State */
     #custom-cursor-ring.pressed {
-        width: 14px;
-        height: 14px;
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.7);
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.25);
+        border-color: #ffffff;
     }
 }
