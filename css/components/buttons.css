@@ -91,8 +91,20 @@
 
 .tag {
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: 10px;
     color: var(--stone);
     border: 1px solid var(--line);
-    padding: 4px 9px;
+    padding: 3px 7px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .tag {
+        font-size: 9px;
+        padding: 2px 5px;
+    }
 }

@@ -31,8 +31,15 @@ export function parseMarkdown(text) {
     return placeholder;
   });
 
-  // Blockquotes
-  html = html.replace(/^>\s+(.*$)/gim, "<blockquote>$1</blockquote>");
+  // Blockquotes (group contiguous > lines into a single <blockquote>)
+  html = html.replace(/(?:^>\s*.*(?:\n|$))+/gm, (quoteBlock) => {
+    const content = quoteBlock
+      .trim()
+      .split("\n")
+      .map((line) => line.replace(/^>\s*/, ""))
+      .join("<br>");
+    return `<blockquote>${content}</blockquote>`;
+  });
 
   // Headings
   html = html.replace(/^###### (.*$)/gim, "<h6>$1</h6>");
@@ -110,7 +117,7 @@ export function openJournalModal(item) {
     ${headerMedia}
     <div class="journal-modal-body">
       <div class="journal-modal-meta">
-        <span>[${item.type || "Article"}]</span>
+        <span>[${item.badge || "Article"}]</span>
         <span>•</span>
         <span>${item.date || ""}</span>
         <span>•</span>
@@ -168,7 +175,7 @@ export async function renderJournal() {
       card.innerHTML = `
         <div class="journal-thumb-wrap">
           <img class="journal-thumb" src="${thumbSrc}" alt="${item.title || "Journal cover"}" />
-          <div class="journal-badge">${item.type || "Article"}</div>
+          <div class="journal-badge">${item.badge || "Article"}</div>
         </div>
         <div class="journal-card-body">
           <div class="journal-meta">
