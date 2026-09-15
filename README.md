@@ -1,5 +1,7 @@
 # Aryan Mishra — Portfolio & Mathematical Canvas
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-2bff88.svg?style=flat-square)](LICENSE)
+
 A personal portfolio built with zero dependencies, zero build steps, and pure vanilla web standards. It features an interactive 2D background canvas engine that visualizes core concepts from linear algebra, wave physics, and vector calculus at 60 FPS, wrapped in a dark liquid-glass aesthetic.
 
 🔗 **Live Site**: [aryanmsrh.github.io](https://aryanmsrh.github.io)
@@ -101,4 +103,4 @@ where time-dependent parameters are modulated by scroll distortion:
 
 ## License
 
-MIT License. Feel free to explore the code and derivations!
+This project is licensed under the [MIT License](LICENSE) — see the [LICENSE](LICENSE) file for details. Feel free to explore the code and derivations!
