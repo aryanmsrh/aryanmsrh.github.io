@@ -1,6 +1,13 @@
-# Aryan Mishra — Portfolio & Mathematical Canvas
+# Aryan Mishra
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-2bff88.svg?style=flat-square)](LICENSE)
+---
+
+[![License](https://img.shields.io/badge/License-2bff88?style=for-the-badge)](LICENSE)
+[![Website](https://img.shields.io/badge/Website-aryanmsrh.github.io-0a0c10?style=for-the-badge&logo=githubpages&logoColor=2bff88)](https://aryanmsrh.github.io)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![KaTeX](https://img.shields.io/badge/KaTeX-Math-329894?style=for-the-badge&logo=katex&logoColor=white)](https://katex.org/)
 
 A personal portfolio built with zero dependencies, zero build steps, and pure vanilla web standards. It features an interactive 2D background canvas engine that visualizes core concepts from linear algebra, wave physics, and vector calculus at 60 FPS, wrapped in a dark liquid-glass aesthetic.
 
